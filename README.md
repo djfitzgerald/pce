@@ -1,16 +1,20 @@
 # PCE - PC Emulator
-Fork of "PCE - PC Emulator" written by [Hampa Hug](mailto: hampa@hampa.ch)
+Fork of [PCE - PC Emulator](http://www.hampa.ch/pce/index.html) written by [Hampa Hug](<hampa@hampa.ch>)
 
 PCE is a collection of microcomputer emulators.
 
 For further information check out these files:
 
-* `doc/pce-ibmpc.txt` - PCE/ibmpc, an IBM PC 5150 emulator
-* `doc/pce-macplus.txt` - PCE/macplus, a Macintosh Plus emulator
-* `doc/keys.txt` - Key combinations to control the emulator
-* `doc/monitor.txt` - The monitor interface
-* `doc/messages.txt` - Messages to control the emulator
-
+* `doc/pce-ibmpc.txt`
+  * PCE/ibmpc, an IBM PC 5150 emulator
+* `doc/pce-macplus.txt`
+  * PCE/macplus, a Macintosh Plus emulator
+* `doc/keys.txt`
+  * Key combinations to control the emulator
+* `doc/monitor.txt`
+  * The monitor interface
+* `doc/messages.txt`
+  * Messages to control the emulator
 
 ## Install
 To install do:
