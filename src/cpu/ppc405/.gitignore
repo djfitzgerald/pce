@@ -1,0 +1,6 @@
+/disasm.o
+/mmu.o
+/opcode13.o
+/opcode1f.o
+/opcodes.o
+/ppc405.o

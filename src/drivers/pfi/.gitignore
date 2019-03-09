@@ -1,0 +1,7 @@
+/decode-bits.o
+/pfi-io.o
+/pfi-kryo.o
+/pfi-pfi.o
+/pfi-scp.o
+/pfi.o
+/track.o

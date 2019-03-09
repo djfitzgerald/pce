@@ -1,0 +1,7 @@
+/expr.o
+/read.o
+/scanner.o
+/section.o
+/strings.o
+/value.o
+/write.o

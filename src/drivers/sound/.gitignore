@@ -1,0 +1,5 @@
+/filter.o
+/sound-null.o
+/sound-oss.o
+/sound-wav.o
+/sound.o

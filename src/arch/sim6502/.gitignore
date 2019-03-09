@@ -1,0 +1,4 @@
+*.cfg
+*.o
+*.rom
+/pce-sim6502

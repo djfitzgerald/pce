@@ -1,0 +1,12 @@
+/dis_z80.o
+/disasm.o
+/e8080.o
+/flags.o
+/op_cb.o
+/op_dd.o
+/op_dd_cb.o
+/op_ed.o
+/op_fd.o
+/op_fd_cb.o
+/op_z80.o
+/opcodes.o

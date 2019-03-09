@@ -1,0 +1,10 @@
+/char-mouse.o
+/char-null.o
+/char-posix.o
+/char-ppp.o
+/char-pty.o
+/char-slip.o
+/char-stdio.o
+/char-tcp.o
+/char-tios.o
+/char.o

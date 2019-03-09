@@ -1,0 +1,6 @@
+/arm.o
+/copr14.o
+/copr15.o
+/disasm.o
+/mmu.o
+/opcodes.o

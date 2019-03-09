@@ -1,0 +1,4 @@
+/disasm.o
+/mmu.o
+/opcodes.o
+/sparc32.o

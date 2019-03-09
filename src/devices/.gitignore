@@ -1,0 +1,11 @@
+/ata.o
+/device.o
+/fdc.o
+/hdc.o
+/memory.o
+/nvram.o
+/parport.o
+/pci-ata.o
+/pci.o
+/serport.o
+/slip.o
