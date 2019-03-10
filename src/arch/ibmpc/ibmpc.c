@@ -6,6 +6,7 @@
  * File name:   src/arch/ibmpc/ibmpc.c                                       *
  * Created:     1999-04-16 by Hampa Hug <hampa@hampa.ch>                     *
  * Copyright:   (C) 1999-2017 Hampa Hug <hampa@hampa.ch>                     *
+ *              (C) 2019 Dan FitzGerald <daniel.j.fitzgerald@gmail.com>      *
  *****************************************************************************/
 
 /*****************************************************************************
@@ -468,6 +469,9 @@ void pc_setup_system (ibmpc_t *pc, ini_sct_t *ini)
 
 	if (strcmp (model, "5150") == 0) {
 		pc->model = PCE_IBMPC_5150;
+	}
+	else if (strcmp (model, "5155") == 0){
+		pc->model = PCE_IBMPC_5160 | PCE_IBMPC_5155;
 	}
 	else if (strcmp (model, "5160") == 0) {
 		pc->model = PCE_IBMPC_5160;
