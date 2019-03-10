@@ -72,6 +72,8 @@
 
 #include <libini/libini.h>
 
+#include "ibmpc.h"
+
 
 #define PCE_IBMPC_SLEEP 25000
 
