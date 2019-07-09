@@ -1,4 +1,4 @@
-.TH PFI 1 "2017-12-18" "HH" "pce"
+.TH PFI 1 "2019-06-26" "HH" "pce"
 \
 .SH NAME
 pfi \- convert and modify PFI flux images
@@ -35,6 +35,9 @@ used, the file format is detected automatically.
 
 Valid formats are:
 .RS
+.TP
+.B a2r
+Applesauce flux image
 .TP
 .B pfi
 The native PFI format
@@ -104,9 +107,20 @@ Valid decode types are:
 Save the decoded image as a PRI image.
 .TP
 .B pri-mac
+This is synonymous with \fBpri-mac-500\fR.
+.TP
+.B pri-mac-490
 Save the decoded image as a PRI image. This decode type also overrides
 the bitrate set with the \fB-r\fR option with the apporpriate variable
-bitrates used by Macintosh double density disk drives.
+bitrates used by Macintosh double density disk drives at 489.6 kbit/s.
+.TP
+.B pri-mac-500
+Save the decoded image as a PRI image. This decode type also overrides
+the bitrate set with the \fB-r\fR option with the apporpriate variable
+bitrates used by Macintosh double density disk drives at 500 kbit/s.
+.TP
+.B text
+Save the decoded image in textual form.
 .RE
 .TP
 .B "delete"
@@ -126,6 +140,9 @@ Valid encode types are:
 .TP
 .B pri
 Encode a PRI image
+.TP
+.B text
+Encode a textual representation of the image produced by decode text.
 .RE
 .TP
 .B "info"
@@ -147,6 +164,17 @@ Adjust the rotational speed of all selected tracks to \fIrpm\fR
 revolutions per minute by scaling the pulse widths by a constant
 factor.
 .TP
+.BI "set-rpm-mac"
+This is synonymous with \fBset-rpm-mac-500\fR.
+.TP
+.BI "set-rpm-mac-490"
+Adjust the rotational speed of all selected tracks to match a
+Macintosh variable speed drive at 489.6 kbit/s.
+.TP
+.BI "set-rpm-mac-500"
+Adjust the rotational speed of all selected tracks to match a
+Macintosh variable speed drive at 500 kbit/s.
+.TP
 .BI "shift-index " "offset"
 Add \fIoffset\fR clock cycles to all index positions, thereby rotating
 the track data relative to the index.
@@ -154,6 +182,9 @@ the track data relative to the index.
 .BI "slack " percentage
 Limit the slack data before the first and after the last index to at
 most \fIpercentage\fR percent of a full revolution.
+.TP
+.BI wpcom
+Simulate write precompensation.
 .RE
 \
 .TP
@@ -208,6 +239,9 @@ of a complete revolution. The default is 10.
 .TP
 .B slack2
 The amount of slack space after the last index. The default is 10.
+.TP
+.B slack
+Set \fBslack1\fR and \fBslack2\fR to the same value.
 .TP
 .BI "weak-bits " "val"
 If \fIval\fR is non-zero enable weak bit detection when decoding to PRI.

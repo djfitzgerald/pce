@@ -7,6 +7,7 @@ DIST += $(rel)/Makefile.inc $(rel)/stdint/stdint.h
 
 LIBPCE_BAS := \
 	brkpt \
+	cfg \
 	cmd \
 	console \
 	getopt \
@@ -19,6 +20,7 @@ LIBPCE_BAS := \
 	log \
 	monitor \
 	msg \
+	msgdsk \
 	path \
 	srec \
 	string \
@@ -39,6 +41,7 @@ CLN  += $(LIBPCE_OBJ)
 DIST += $(LIBPCE_SRC) $(LIBPCE_HDR)
 
 $(rel)/brkpt.o:		$(rel)/brkpt.c
+$(rel)/cfg.o:		$(rel)/cfg.c
 $(rel)/cmd.o:		$(rel)/cmd.c
 $(rel)/console.o:	$(rel)/console.c
 $(rel)/getopt.o:	$(rel)/getopt.c
@@ -50,6 +53,7 @@ $(rel)/initerm.o:	$(rel)/initerm.c
 $(rel)/log.o:		$(rel)/log.c
 $(rel)/monitor.o:	$(rel)/monitor.c
 $(rel)/msg.o:		$(rel)/msg.c
+$(rel)/msgdsk.o:	$(rel)/msgdsk.c
 $(rel)/path.o:		$(rel)/path.c
 $(rel)/tun.o:		$(rel)/tun.c
 $(rel)/srec.o:		$(rel)/srec.c

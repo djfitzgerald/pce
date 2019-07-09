@@ -5,7 +5,7 @@
 /*****************************************************************************
  * File name:   src/utils/pri/main.c                                         *
  * Created:     2012-01-31 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2012-2018 Hampa Hug <hampa@hampa.ch>                     *
+ * Copyright:   (C) 2012-2019 Hampa Hug <hampa@hampa.ch>                     *
  *****************************************************************************/
 
 /*****************************************************************************
@@ -185,7 +185,8 @@ void print_help (void)
 		"  fm-track-size\n"
 		"\n"
 		"decode types are:\n"
-		"  auto, ibm-fm, ibm-mfm, mac-gcr, text\n"
+		"  auto, ibm-fm, ibm-mfm, mac-gcr,\n"
+		"  text, text-fm, text-mfm, text-mac, text-raw\n"
 		"\n"
 		"encode types are:\n"
 		"  auto, text, mac-gcr\n"
@@ -193,7 +194,7 @@ void print_help (void)
 		"  ibm-mfm, ibm-mfm-dd-300, ibm-mfm-hd-300, ibm-mfm-hd-360\n"
 		"\n"
 		"file formats are:\n"
-		"  pri, tc\n"
+		"  pri, tc, woz\n"
 		"\n"
 		"track attributes are:\n"
 		"  clock, data, size\n",
@@ -209,7 +210,7 @@ void print_version (void)
 	fputs (
 		"pri version " PCE_VERSION_STR
 		"\n\n"
-		"Copyright (C) 2012-2018 Hampa Hug <hampa@hampa.ch>\n",
+		"Copyright (C) 2012-2019 Hampa Hug <hampa@hampa.ch>\n",
 		stdout
 	);
 

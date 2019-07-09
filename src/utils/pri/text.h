@@ -5,7 +5,7 @@
 /*****************************************************************************
  * File name:   src/utils/pri/text.h                                         *
  * Created:     2017-10-28 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2017-2018 Hampa Hug <hampa@hampa.ch>                     *
+ * Copyright:   (C) 2017-2019 Hampa Hug <hampa@hampa.ch>                     *
  *****************************************************************************/
 
 /*****************************************************************************
@@ -32,6 +32,13 @@
 
 
 typedef struct {
+	unsigned long pos;
+	char          wrap;
+	pri_evt_t     *evt;
+} pri_text_pos_t;
+
+
+typedef struct {
 	FILE           *fp;
 
 	unsigned       cnt;
@@ -42,6 +49,8 @@ typedef struct {
 	pri_trk_t      *trk;
 	unsigned long  c;
 	unsigned long  h;
+
+	char           first_track;
 
 	unsigned long  bit_cnt;
 	unsigned long  bit_max;
@@ -67,6 +76,9 @@ typedef struct {
 	unsigned short crc;
 } pri_text_t;
 
+
+void txt_save_pos (const pri_text_t *ctx, pri_text_pos_t *pos);
+void txt_restore_pos (pri_text_t *ctx, const pri_text_pos_t *pos);
 
 int txt_dec_match (pri_text_t *ctx, const void *buf, unsigned cnt);
 

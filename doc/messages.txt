@@ -10,7 +10,6 @@ will eject the first floppy disk. Message prefixes can be omitted, as long
 as the message name is unambiguous (except where noted). The following
 commands are equivalent:
 
--m emu.disk.eject 0
 -m disk.eject 0
 -m eject 0
 
@@ -32,17 +31,6 @@ emu.cpu.speed <speed>
 
 emu.cpu.speed.step <step>
 	Add <step> to the CPU clock frequency multiplier.
-
-emu.disk.commit (<drive> [":" <drive> ...]) | "all"
-	Commit changes to drives that have copy-on-write enabled.
-
-emu.disk.eject <drive> [":" <drive> ...]
-	Eject the disk in drive <drive>.
-
-emu.disk.insert <drive>:<fname>
-	Insert a new disk. <drive> is a drive number as specified
-	in the config file. The disk image type is "auto". If a disk
-	is already inserted in <drive> it is ejected first.
 
 emu.exit
 	Terminate the emulator immediately.
@@ -104,16 +92,8 @@ emu.cpu.speed.step <adjustment>
 emu.disk.boot <bootdrive>
 	Set the boot drive.
 
-emu.disk.commit (<drive> [":" <drive> ...]) | "all"
-	Commit changes to drives that have copy-on-write enabled.
-
-emu.disk.eject <drive> [":" <drive> ...]
-	Eject the disk in drive <drive>.
-
-emu.disk.insert <drive>:<fname>
-	Insert a new disk. <drive> is a drive number as specified
-	in the config file. The disk image type is "auto". If a disk
-	is already inserted in <drive> it is ejected first.
+emu.fdc.accurate "0" | "1"
+	Disable or enable the FDC accurate mode.
 
 emu.parport.driver <port>":"<driver>
 	Attach a parallel port to a new character driver. The driver
@@ -201,32 +181,8 @@ emu.cpu.speed <speed>
 emu.cpu.speed.step <step>
 	Add <step> to the CPU clock frequency multiplier.
 
-emu.disk.commit (<drive> [":" <drive> ...]) | "all"
-	Commit changes to drives that have copy-on-write enabled.
-
-emu.disk.eject <drive> [":" <drive> ...]
-	Eject the disk in drive <drive>.
-
-emu.disk.insert <drive>:<fname>
-	Insert a new disk. <drive> is a drive number as specified
-	in the config file. The disk image type is "auto". If a disk
-	is already inserted in <drive> it is ejected first.
-
-emu.disk.ro <drive>
-	Set the read-only flag for the disk in drive <drive>.
-
-emu.disk.rw <drive>
-	Clear the read-only flag for the disk in drive <drive>.
-
 emu.exit
 	Terminate the emulator immediately.
-
-emu.fdc.accurate "0" | "1"
-	Disable or enable the FDC accurate mode.
-
-emu.iwm.insert <drive>":"<fname>
-	Attach a PRI image to an IWM drive. After this, the disk
-	must still be inserted using "mac.insert".
 
 emu.iwm.ro <drive>
 	Set the drive <drive> to read-only (locked). The first
@@ -239,6 +195,9 @@ emu.iwm.rw <drive>
 emu.iwm.status
 	Print status information on all IWM drives.
 
+emu.mac.insert [<drive>]
+	Simulate re-inserting a disk that has been dragged to the trash.
+
 emu.pause "0" | "1"
 	Pause or resume the emulation.
 
@@ -248,13 +207,20 @@ emu.pause.toggle
 emu.reset
 	Reset the emulated machine.
 
-emu.serport.driver <port>":"<driver>
-	Attach a serial port to a new character driver. The driver
+emu.ser1.driver <driver>
+	Attach the first serial port to a new character driver. The driver
 	string has the same format as in the config file.
 
-emu.serport.file <port>":"<filename>
+emu.ser1.file <filename>
 	This is equivalent to
-	emu.serport.driver <port>:stdio:file=<filename>.
+	emu.ser1.driver "stdio:file=<filename>"
+
+emu.ser1.multi <count>
+	Set the multi char count for the first serial port.
+
+emu.ser2.driver <driver>
+emu.ser2.file <filename>
+emu.ser2.multi <count>
 
 emu.stop
 	Fall back to the monitor.
@@ -262,8 +228,29 @@ emu.stop
 emu.video.brightness <brightness>
 	Set the video brightness in the range of 0 - 1000.
 
-mac.insert [<drive>]
-	Simulate re-inserting a disk that has been dragged to the trash.
+
+Disk messages
+==============================================================================
+
+disk.commit [<id> | "all"]
+	Commit changes to drives that have copy-on-write enabled.
+
+disk.eject [<id>]
+	Eject the disk <id> and set the current disk id to <id>.
+
+disk.id <id>
+	Set the current disk id to <id>.
+
+disk.insert <fname>
+	Insert a new disk into the current drive. The disk image type
+	is "auto". If a disk already inserted in the current drive it is
+	ejected first.
+
+disk.ro <id>
+	Set the read-only flag for the disk in drive <id>.
+
+disk.rw <id>
+	Clear the read-only flag for the disk in drive <id>.
 
 
 Terminal messages

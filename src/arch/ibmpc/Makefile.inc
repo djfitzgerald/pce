@@ -36,8 +36,10 @@ $(rel)/%.o: $(rel)/%.c
 # ----------------------------------------------------------------------
 
 PCE_IBMPC_BAS  := \
+	atari-pc \
 	cassette \
 	cmd \
+	covox \
 	ems \
 	hook \
 	ibmpc \
@@ -57,6 +59,7 @@ PCE_IBMPC_ETC  := $(rel)/pce-ibmpc.cfg
 PCE_IBMPC_BIN  := $(rel)/pce-ibmpc$(EXEEXT)
 
 PCE_IBMPC_OBJ_EXT := \
+	src/chipset/clock/mc146818a.o \
 	src/chipset/82xx/e8237.o \
 	src/chipset/82xx/e8250.o \
 	src/chipset/82xx/e8253.o \
@@ -73,6 +76,7 @@ PCE_IBMPC_OBJ_EXT := \
 	src/devices/serport.o \
 	src/drivers/options.o \
 	src/lib/brkpt.o \
+	src/lib/cfg.o \
 	src/lib/cmd.o \
 	src/lib/console.o \
 	src/lib/getopt.o \
@@ -85,12 +89,14 @@ PCE_IBMPC_OBJ_EXT := \
 	src/lib/log.o \
 	src/lib/monitor.o \
 	src/lib/msg.o \
+	src/lib/msgdsk.o \
 	src/lib/path.o \
 	src/lib/string.o \
 	src/lib/sysdep.o \
 	$(CPU_8086_OBJ) \
 	$(DEV_VID_OBJ) \
 	$(DRV_BLK_OBJ) \
+	$(DRV_PRI_OBJ) \
 	$(DRV_PSI_OBJ) \
 	$(DRV_CHR_OBJ) \
 	$(DRV_SND_OBJ) \
@@ -113,6 +119,7 @@ DIST += $(rel)/pce-ibmpc.cfg.in $(rel)/pce.inc $(rel)/pce-lib.inc
 
 $(rel)/cassette.o:	$(rel)/cassette.c
 $(rel)/cmd.o:		$(rel)/cmd.c
+$(rel)/covox.o:		$(rel)/covox.c
 $(rel)/ems.o:		$(rel)/ems.c
 $(rel)/hook.o:		$(rel)/hook.c
 $(rel)/ibmpc.o:		$(rel)/ibmpc.c

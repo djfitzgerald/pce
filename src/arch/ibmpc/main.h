@@ -36,6 +36,7 @@
 #define PCE_IBMPC_5155 2
 #define PCE_IBMPC_5160 4
 #define PCE_IBMPC_M24  8
+#define PCE_IBMPC_ATARI 16
 
 
 extern const char *par_terminal;

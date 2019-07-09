@@ -5,7 +5,7 @@
 /*****************************************************************************
  * File name:   src/utils/pri/text.c                                         *
  * Created:     2014-08-18 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2014-2018 Hampa Hug <hampa@hampa.ch>                     *
+ * Copyright:   (C) 2014-2019 Hampa Hug <hampa@hampa.ch>                     *
  *****************************************************************************/
 
 /*****************************************************************************
@@ -31,6 +31,20 @@
 #include "main.h"
 #include "text.h"
 
+
+void txt_save_pos (const pri_text_t *ctx, pri_text_pos_t *pos)
+{
+	pos->pos = ctx->trk->idx;
+	pos->wrap = ctx->trk->wrap;
+	pos->evt = ctx->trk->cur_evt;
+}
+
+void txt_restore_pos (pri_text_t *ctx, const pri_text_pos_t *pos)
+{
+	ctx->trk->idx = pos->pos;
+	ctx->trk->wrap = pos->wrap;
+	ctx->trk->cur_evt = pos->evt;
+}
 
 static
 unsigned txt_guess_encoding (pri_trk_t *trk)
@@ -68,16 +82,12 @@ unsigned txt_guess_encoding (pri_trk_t *trk)
 int txt_dec_match (pri_text_t *ctx, const void *buf, unsigned cnt)
 {
 	unsigned            i;
-	unsigned long       pos;
 	unsigned long       type, val;
-	int                 wrap;
 	unsigned long       bit;
-	pri_evt_t           *evt;
 	const unsigned char *ptr;
+	pri_text_pos_t      pos;
 
-	pos = ctx->trk->idx;
-	wrap = ctx->trk->wrap;
-	evt = ctx->trk->cur_evt;
+	txt_save_pos (ctx, &pos);
 
 	ptr = buf;
 
@@ -93,10 +103,8 @@ int txt_dec_match (pri_text_t *ctx, const void *buf, unsigned cnt)
 		}
 	}
 
-	if (i < cnt) {
-		ctx->trk->idx = pos;
-		ctx->trk->wrap = wrap;
-		ctx->trk->cur_evt = evt;
+	if ((i < cnt) || ctx->trk->wrap) {
+		txt_restore_pos (ctx, &pos);
 
 		return (1);
 	}
@@ -186,16 +194,24 @@ int pri_decode_text_auto_cb (pri_img_t *img, pri_trk_t *trk, unsigned long c, un
 }
 
 static
+void txt_dec_init (pri_text_t *ctx, FILE *fp, pri_img_t *img, pri_trk_t *trk, unsigned long c, unsigned long h)
+{
+	memset (ctx, 0, sizeof (pri_text_t));
+
+	ctx->fp = fp;
+	ctx->img = img;
+	ctx->trk = trk;
+	ctx->c = c;
+	ctx->h = h;
+	ctx->first_track = 1;
+}
+
+static
 int pri_decode_text_mfm_cb (pri_img_t *img, pri_trk_t *trk, unsigned long c, unsigned long h, void *opaque)
 {
 	pri_text_t ctx;
 
-	ctx.fp = opaque;
-	ctx.img = img;
-	ctx.trk = trk;
-	ctx.c = c;
-	ctx.h = h;
-
+	txt_dec_init (&ctx, opaque, img, trk, c, h);
 	txt_mfm_dec_track (&ctx);
 
 	return (0);
@@ -206,12 +222,7 @@ int pri_decode_text_fm_cb (pri_img_t *img, pri_trk_t *trk, unsigned long c, unsi
 {
 	pri_text_t ctx;
 
-	ctx.fp = opaque;
-	ctx.img = img;
-	ctx.trk = trk;
-	ctx.c = c;
-	ctx.h = h;
-
+	txt_dec_init (&ctx, opaque, img, trk, c, h);
 	txt_fm_dec_track (&ctx);
 
 	return (0);
@@ -222,12 +233,7 @@ int pri_decode_text_mac_cb (pri_img_t *img, pri_trk_t *trk, unsigned long c, uns
 {
 	pri_text_t ctx;
 
-	ctx.fp = opaque;
-	ctx.img = img;
-	ctx.trk = trk;
-	ctx.c = c;
-	ctx.h = h;
-
+	txt_dec_init (&ctx, opaque, img, trk, c, h);
 	txt_mac_dec_track (&ctx);
 
 	return (0);
@@ -238,12 +244,7 @@ int pri_decode_text_raw_cb (pri_img_t *img, pri_trk_t *trk, unsigned long c, uns
 {
 	pri_text_t ctx;
 
-	ctx.fp = opaque;
-	ctx.img = img;
-	ctx.trk = trk;
-	ctx.c = c;
-	ctx.h = h;
-
+	txt_dec_init (&ctx, opaque, img, trk, c, h);
 	txt_raw_dec_track (&ctx);
 
 	return (0);
@@ -794,6 +795,9 @@ int txt_encode_pri0 (pri_text_t *ctx)
 		}
 		else if (feof (ctx->fp)) {
 			break;
+		}
+		else {
+			return (1);
 		}
 	}
 

@@ -69,6 +69,7 @@ PCE_ATARIST_OBJ_EXT := \
 	src/devices/memory.o \
 	src/drivers/options.o \
 	src/lib/brkpt.o \
+	src/lib/cfg.o \
 	src/lib/cmd.o \
 	src/lib/console.o \
 	src/lib/getopt.o \
@@ -81,6 +82,7 @@ PCE_ATARIST_OBJ_EXT := \
 	src/lib/log.o \
 	src/lib/monitor.o \
 	src/lib/msg.o \
+	src/lib/msgdsk.o \
 	src/lib/path.o \
 	src/lib/string.o \
 	src/lib/sysdep.o \

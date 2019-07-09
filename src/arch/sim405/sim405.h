@@ -5,7 +5,7 @@
 /*****************************************************************************
  * File name:   src/arch/sim405/sim405.h                                     *
  * Created:     2004-06-01 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2004-2015 Hampa Hug <hampa@hampa.ch>                     *
+ * Copyright:   (C) 2004-2018 Hampa Hug <hampa@hampa.ch>                     *
  * Copyright:   (C) 2004-2006 Lukas Ruf <ruf@lpr.ch>                         *
  *****************************************************************************/
 
@@ -138,12 +138,21 @@ typedef struct sim405_s {
 
 	clock_t            real_clk;
 
+	char               sync_time_base;
+
 	unsigned long      sync_clock_sim;
 	unsigned long      sync_clock_real;
 	unsigned long      sync_interval;
 
 	unsigned long      serial_clock;
 	unsigned long      serial_clock_count;
+
+	unsigned           hook_idx;
+	unsigned           hook_cnt;
+	unsigned char      hook_buf[256];
+
+	FILE               *hook_read;
+	FILE               *hook_write;
 
 	unsigned           brk;
 } sim405_t;
@@ -175,6 +184,8 @@ unsigned long long s405_get_clkcnt (sim405_t *sim);
  *****************************************************************************/
 void s405_reset (sim405_t *sim);
 
+void s405_clock_discontinuity (sim405_t *sim);
+
 /*****************************************************************************
  * @short Clock the simulator
  * @param n The number of clock cycles. Must not be 0.
@@ -193,13 +204,6 @@ void s405_break (sim405_t *sim, unsigned char val);
  * Don't use.
  *****************************************************************************/
 void s405_set_keycode (sim405_t *sim, unsigned char val);
-
-/*****************************************************************************
- * @short Send a message to the emulator core
- * @param msg The message
- * @param val The message parameter
- *****************************************************************************/
-int s405_set_msg (sim405_t *sim, const char *msg, const char *val);
 
 
 #endif

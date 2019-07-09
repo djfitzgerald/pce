@@ -5,7 +5,7 @@
 /*****************************************************************************
  * File name:   src/drivers/block/block.c                                    *
  * Created:     2003-04-14 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2003-2018 Hampa Hug <hampa@hampa.ch>                     *
+ * Copyright:   (C) 2003-2019 Hampa Hug <hampa@hampa.ch>                     *
  *****************************************************************************/
 
 /*****************************************************************************
@@ -25,6 +25,7 @@
 #include <drivers/block/blkdosem.h>
 #include <drivers/block/blkpbi.h>
 #include <drivers/block/blkpce.h>
+#include <drivers/block/blkpri.h>
 #include <drivers/block/blkpsi.h>
 #include <drivers/block/blkqed.h>
 #include <drivers/block/blkraw.h>
@@ -375,12 +376,16 @@ void dsk_init (disk_t *dsk, void *ext, uint32_t n, uint32_t c, uint32_t h, uint3
 
 void dsk_del (disk_t *dsk)
 {
+	char *tmp;
+
 	if (dsk != NULL) {
-		free (dsk->fname);
+		tmp = dsk->fname;
 
 		if (dsk->del != NULL) {
 			dsk->del (dsk);
 		}
+
+		free (tmp);
 	}
 }
 
@@ -765,6 +770,12 @@ disk_t *dsk_auto_open (const char *fname, uint64_t ofs, int ro)
 
 	if (type != PSI_FORMAT_NONE) {
 		return (dsk_psi_open (fname, type, ro));
+	}
+
+	type = dsk_pri_probe (fname);
+
+	if (type != PRI_FORMAT_NONE) {
+		return (dsk_pri_open (fname, type, ro));
 	}
 
 	type = psi_guess_type (fname);

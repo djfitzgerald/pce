@@ -5,7 +5,7 @@
 /*****************************************************************************
  * File name:   src/arch/dos/int21.c                                         *
  * Created:     2012-12-30 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2012-2015 Hampa Hug <hampa@hampa.ch>                     *
+ * Copyright:   (C) 2012-2019 Hampa Hug <hampa@hampa.ch>                     *
  *****************************************************************************/
 
 /*****************************************************************************
@@ -264,6 +264,35 @@ int int21_fct_02 (dos_t *sim)
 
 	fputc (e86_get_dl (&sim->cpu), fp);
 	fflush (fp);
+
+	int21_ret (sim, 0, 0x0000);
+
+	return (0);
+}
+
+/*
+ * 06: Direct console output
+ */
+static
+int int21_fct_06 (dos_t *sim)
+{
+	unsigned char val;
+	FILE          *fp;
+
+	val = e86_get_dl (&sim->cpu);
+
+	if (val == 0xff) {
+		return (1);
+	}
+
+	if ((fp = int21_get_fp (sim, 1)) == NULL) {
+		return (int21_ret (sim, 1, 6));
+	}
+
+	fputc (val, fp);
+	fflush (fp);
+
+	e86_set_al (&sim->cpu, val);
 
 	int21_ret (sim, 0, 0x0000);
 
@@ -1438,6 +1467,57 @@ int int21_fct_58 (dos_t *sim)
 	return (0);
 }
 
+/*
+ * 5B: Create
+ */
+static
+int int21_fct_5b (dos_t *sim)
+{
+	unsigned       fd;
+	unsigned short ds, dx;
+	char           *name;
+	char           dosname[256];
+	struct stat    st;
+
+	if ((fd = sim_get_free_fd (sim)) & 0x8000) {
+		return (int21_ret (sim, 1, 0x0001));
+	}
+
+	ds = e86_get_ds (&sim->cpu);
+	dx = e86_get_dx (&sim->cpu);
+
+	if (sim_get_asciiz (sim, ds, dx, dosname, sizeof (dosname))) {
+		return (int21_ret (sim, 1, 0x0001));
+	}
+
+	if ((name = sim_get_host_name (sim, dosname)) == NULL) {
+		return (int21_ret (sim, 1, 0x0001));
+	}
+
+	if (strcasecmp (dosname, "nul") == 0) {
+		sim->file[fd] = NULL;
+	}
+	else {
+		if (stat (name, &st) == 0) {
+			sim->file[fd] = NULL;
+		}
+		else {
+			sim->file[fd] = fopen (name, "w+b");
+		}
+	}
+
+	if (sim->file[fd] == NULL) {
+		free (name);
+		return (int21_ret (sim, 1, 0x0001));
+	}
+
+	free (name);
+
+	int21_ret (sim, 0, fd);
+
+	return (0);
+}
+
 int sim_int21 (dos_t *sim)
 {
 	switch (e86_get_ah (&sim->cpu)) {
@@ -1449,6 +1529,9 @@ int sim_int21 (dos_t *sim)
 
 	case 0x02:
 		return (int21_fct_02 (sim));
+
+	case 0x06:
+		return (int21_fct_06 (sim));
 
 	case 0x09:
 		return (int21_fct_09 (sim));
@@ -1572,6 +1655,9 @@ int sim_int21 (dos_t *sim)
 
 	case 0x58:
 		return (int21_fct_58 (sim));
+
+	case 0x5b:
+		return (int21_fct_5b (sim));
 
 	case 0x59:
 	case 0x5a:

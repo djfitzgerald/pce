@@ -5,7 +5,7 @@
 /*****************************************************************************
  * File name:   src/arch/atarist/atarist.c                                   *
  * Created:     2011-03-17 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2011-2017 Hampa Hug <hampa@hampa.ch>                     *
+ * Copyright:   (C) 2011-2019 Hampa Hug <hampa@hampa.ch>                     *
  *****************************************************************************/
 
 /*****************************************************************************
@@ -234,6 +234,9 @@ int st_set_magic (atari_st_t *sim, pce_key_t key)
 {
 	if (key == PCE_KEY_TAB) {
 		st_set_msg (sim, "emu.viking.toggle", "1");
+	}
+	else if (key == PCE_KEY_SPACE) {
+		st_set_msg (sim, "term.release", "1");
 	}
 	else {
 		return (1);
@@ -540,19 +543,15 @@ void st_setup_psg (atari_st_t *sim, ini_sct_t *ini)
 static
 void st_setup_fdc (atari_st_t *sim, ini_sct_t *ini)
 {
-	const char *fname0, *fname1;
-	ini_sct_t  *sct;
+	unsigned  id0, id1;
+	ini_sct_t *sct;
 
 	sct = ini_next_sct (ini, NULL, "fdc");
 
-	ini_get_string (sct, "file0", &fname0, NULL);
-	ini_get_string (sct, "file1", &fname1, NULL);
+	ini_get_uint16 (sct, "id0", &id0, 0);
+	ini_get_uint16 (sct, "id1", &id1, 1);
 
-	pce_log_tag (MSG_INF, "FDC:",
-		"file0=%s file1=%s\n",
-		(fname0 != NULL) ? fname0 : "<none>",
-		(fname1 != NULL) ? fname1 : "<none>"
-	);
+	pce_log_tag (MSG_INF, "FDC:", "drive0=%u drive1=%u\n", id0, id1);
 
 	st_fdc_init (&sim->fdc);
 
@@ -565,11 +564,8 @@ void st_setup_fdc (atari_st_t *sim, ini_sct_t *ini)
 
 	st_fdc_set_disks (&sim->fdc, sim->dsks);
 
-	st_fdc_set_fname (&sim->fdc, 0, fname0);
-	st_fdc_set_fname (&sim->fdc, 1, fname1);
-
-	st_fdc_set_disk_id (&sim->fdc, 0, 0);
-	st_fdc_set_disk_id (&sim->fdc, 1, 1);
+	st_fdc_set_disk_id (&sim->fdc, 0, id0);
+	st_fdc_set_disk_id (&sim->fdc, 1, id1);
 }
 
 static
@@ -691,6 +687,8 @@ void st_init (atari_st_t *sim, ini_sct_t *ini)
 
 	sim->pause = 0;
 	sim->brk = 0;
+
+	sim->disk_id = 0;
 
 	sim->speed_factor = 1;
 	sim->speed_clock_extra = 0;
@@ -1040,9 +1038,9 @@ void st_clock (atari_st_t *sim, unsigned n)
 		}
 	}
 
-	st_fdc_clock_media_change (&sim->fdc, sim->clk_div[2]);
+	st_fdc_clock_media_change (&sim->fdc, 8192);
 
-	st_realtime_sync (sim, sim->clk_div[2]);
+	st_realtime_sync (sim, 8192);
 
 	sim->clk_div[2] -= 8192;
 }

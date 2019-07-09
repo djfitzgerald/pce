@@ -5,7 +5,7 @@
 /*****************************************************************************
  * File name:   src/arch/macplus/macplus.c                                   *
  * Created:     2007-04-15 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2007-2018 Hampa Hug <hampa@hampa.ch>                     *
+ * Copyright:   (C) 2007-2019 Hampa Hug <hampa@hampa.ch>                     *
  *****************************************************************************/
 
 /*****************************************************************************
@@ -347,13 +347,15 @@ void mac_set_mouse (void *ext, int dx, int dy, unsigned but)
 		return;
 	}
 
+	if ((sim->mouse_button ^ but) & ~but & 4) {
+		mac_set_msg (sim, "term.release", "1");
+	}
+
+	sim->mouse_button = but;
+
 	if (sim->adb_mouse != NULL) {
 		adb_mouse_move (sim->adb_mouse, but, dx, dy);
 		return;
-	}
-
-	if ((sim->mouse_button ^ but) & ~but & 2) {
-		trm_set_msg_trm (sim->trm, "term.release", "1");
 	}
 
 	old = sim->via_port_b;
@@ -371,7 +373,6 @@ void mac_set_mouse (void *ext, int dx, int dy, unsigned but)
 
 	sim->mouse_delta_x += dx;
 	sim->mouse_delta_y += dy;
-	sim->mouse_button = but;
 }
 
 static
@@ -593,20 +594,31 @@ void mac_scc_set_uint8 (void *ext, unsigned long addr, unsigned char val)
 static
 void mac_setup_system (macplus_t *sim, ini_sct_t *ini)
 {
+	int        memtest;
 	const char *model;
 	ini_sct_t  *sct;
 
-	sct = ini_next_sct (ini, NULL, "system");
-
-	if (sct == NULL) {
+	if ((sct = ini_next_sct (ini, NULL, "system")) == NULL) {
 		sct = ini;
 	}
 
 	ini_get_string (sct, "model", &model, "mac-plus");
 
-	pce_log_tag (MSG_INF, "SYSTEM:", "model=%s\n", model);
+	if (ini_get_bool (sct, "memtest", &memtest, 1)) {
+		ini_get_bool (ini, "memtest", &memtest, 1);
+	}
 
-	if (strcmp (model, "mac-plus") == 0) {
+	pce_log_tag (MSG_INF, "SYSTEM:", "model=%s memtest=%d\n",
+		model, memtest
+	);
+
+	if (strcmp (model, "mac-128k") == 0) {
+		sim->model = PCE_MAC_PLUS;
+	}
+	else if (strcmp (model, "mac-512k") == 0) {
+		sim->model = PCE_MAC_PLUS;
+	}
+	else if (strcmp (model, "mac-plus") == 0) {
 		sim->model = PCE_MAC_PLUS;
 	}
 	else if (strcmp (model, "mac-se") == 0) {
@@ -619,13 +631,13 @@ void mac_setup_system (macplus_t *sim, ini_sct_t *ini)
 		pce_log (MSG_ERR, "*** unknown model (%s)\n", model);
 		sim->model = PCE_MAC_PLUS;
 	}
+
+	sim->memtest = (memtest != 0);
 }
 
 static
 void mac_setup_mem (macplus_t *sim, ini_sct_t *ini)
 {
-	int memtest;
-
 	sim->mem = mem_new();
 
 	mem_set_fct (sim->mem, sim,
@@ -664,9 +676,7 @@ void mac_setup_mem (macplus_t *sim, ini_sct_t *ini)
 
 	sim->overlay = 0;
 
-	ini_get_bool (ini, "memtest", &memtest, 1);
-
-	if (memtest == 0) {
+	if (sim->memtest == 0) {
 		pce_log_tag (MSG_INF, "RAM:", "disabling memory test\n");
 
 		if (sim->model & PCE_MAC_PLUS) {
@@ -835,7 +845,7 @@ void mac_setup_rtc (macplus_t *sim, ini_sct_t *ini)
 	ini_sct_t     *sct;
 	const char    *fname;
 	const char    *start;
-	int           realtime, romdisk;
+	int           realtime, romdisk, atalk;
 
 	sct = ini_next_sct (ini, NULL, "rtc");
 
@@ -844,8 +854,15 @@ void mac_setup_rtc (macplus_t *sim, ini_sct_t *ini)
 	ini_get_bool (sct, "romdisk", &romdisk, 0);
 	ini_get_string (sct, "start", &start, NULL);
 
-	pce_log_tag (MSG_INF, "RTC:", "file=%s realtime=%d start=%s romdisk=%d\n",
-		fname, realtime, (start != NULL) ? start : "<now>", romdisk
+	if (ini_get_bool (sct, "appletalk", &atalk, 0)) {
+		atalk = -1;
+	}
+
+	pce_log_tag (MSG_INF, "RTC:",
+		"file=%s realtime=%d start=%s romdisk=%d atalk=%d\n",
+		fname, realtime,
+		(start != NULL) ? start : "<now>",
+		romdisk, atalk
 	);
 
 	sim->rtc_fname = strdup (fname);
@@ -866,6 +883,13 @@ void mac_setup_rtc (macplus_t *sim, ini_sct_t *ini)
 		sim->rtc.data[0x79] = 0x06;
 		sim->rtc.data[0x7a] = 0xff;
 		sim->rtc.data[0x7b] = 0xcb;
+	}
+
+	if (atalk == 0) {
+		sim->rtc.data[0x13] = 0x22;
+	}
+	else if (atalk == 1) {
+		sim->rtc.data[0x13] = 0x21;
 	}
 
 	if (start != NULL) {
@@ -988,7 +1012,6 @@ void mac_setup_iwm (macplus_t *sim, ini_sct_t *ini)
 	unsigned   n;
 	int        single, locked, rotate, inserted;
 	unsigned   drive, disk;
-	const char *fname;
 	ini_sct_t  *sct, *sctdev;
 
 	sct = ini_next_sct (ini, NULL, "iwm");
@@ -1006,7 +1029,6 @@ void mac_setup_iwm (macplus_t *sim, ini_sct_t *ini)
 	while (sctdev != NULL) {
 		ini_get_uint16 (sctdev, "drive", &drive, n);
 		ini_get_uint16 (sctdev, "disk", &disk, drive);
-		ini_get_string (sctdev, "file", &fname, NULL);
 
 		ini_get_bool (sct, "single_sided", &single, 0);
 		ini_get_bool (sctdev, "single_sided", &single, single);
@@ -1017,18 +1039,22 @@ void mac_setup_iwm (macplus_t *sim, ini_sct_t *ini)
 		ini_get_bool (sct, "inserted", &inserted, 0);
 		ini_get_bool (sctdev, "inserted", &inserted, inserted);
 
+		if ((drive >= 1) && (drive <= 8)) {
+			if (par_disk_boot & (1U << (drive - 1))) {
+				inserted = 1;
+			}
+		}
+
 		ini_get_bool (sct, "auto_rotate", &rotate, 0);
 		ini_get_bool (sctdev, "auto_rotate", &rotate, rotate);
 
 		pce_log_tag (MSG_INF,
-			"IWM:", "drive=%u size=%uK locked=%d rotate=%d disk=%u file=%s\n",
-			drive, single ? 400 : 800, locked, rotate, disk,
-			(fname != NULL) ? fname : "<none>"
+			"IWM:", "drive=%u size=%uK locked=%d ins=%d rotate=%d disk=%u\n",
+			drive, single ? 400 : 800, locked, inserted, rotate, disk
 		);
 
 		mac_iwm_set_heads (&sim->iwm, drive - 1, single ? 1 : 2);
 		mac_iwm_set_disk_id (&sim->iwm, drive - 1, disk);
-		mac_iwm_set_fname (&sim->iwm, drive - 1, fname);
 		mac_iwm_set_locked (&sim->iwm, drive - 1, locked);
 		mac_iwm_set_auto_rotate (&sim->iwm, drive - 1, rotate);
 
@@ -1113,7 +1139,7 @@ void mac_setup_sony (macplus_t *sim, ini_sct_t *ini)
 
 	sct = ini_next_sct (ini, NULL, "sony");
 
-	ini_get_uint16 (sct, "insert_delay", &def, 30);
+	ini_get_uint16 (sct, "insert_delay", &def, 0);
 	ini_get_bool (sct, "format_hd_as_dd", &format_hd_as_dd, 0);
 
 	mac_sony_init (&sim->sony, sct != NULL);
@@ -1127,8 +1153,8 @@ void mac_setup_sony (macplus_t *sim, ini_sct_t *ini)
 	}
 
 	for (i = 0; i < SONY_DRIVES; i++) {
-		if (par_disk_delay_valid & (1U << i)) {
-			val = par_disk_delay[i];
+		if (par_disk_boot & (1U << i)) {
+			val = 1;
 		}
 		else {
 			sprintf (var, "insert_delay_%u", i + 1);
@@ -1272,6 +1298,8 @@ void mac_init (macplus_t *sim, ini_sct_t *ini)
 	sim->video = NULL;
 
 	sim->reset = 0;
+
+	sim->disk_id = 1;
 
 	sim->dcd_a = 0;
 	sim->dcd_b = 0;

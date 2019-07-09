@@ -5,7 +5,7 @@
 /*****************************************************************************
  * File name:   src/utils/pfi/main.h                                         *
  * Created:     2012-01-19 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2012-2018 Hampa Hug <hampa@hampa.ch>                     *
+ * Copyright:   (C) 2012-2019 Hampa Hug <hampa@hampa.ch>                     *
  *****************************************************************************/
 
 /*****************************************************************************
@@ -57,8 +57,16 @@ extern unsigned long par_weak_i2;
 extern unsigned long par_clock_tolerance;
 
 extern unsigned      par_fold_mode;
+extern unsigned      par_fold_window;
 extern unsigned long par_fold_max;
 
+
+int pfi_parse_double (const char *str, double *val);
+int pfi_parse_long (const char *str, long *val);
+int pfi_parse_ulong (const char *str, unsigned long *val);
+int pfi_parse_uint (const char *str, unsigned *val);
+int pfi_parse_bool (const char *str, int *val);
+int pfi_parse_rate (const char *str, unsigned long *val);
 
 int pfi_for_all_tracks (pfi_img_t *img, pfi_trk_cb fct, void *opaque);
 int pfi_parse_range (const char *str, unsigned long *v1, unsigned long *v2, char *all, char *inv);
@@ -85,13 +93,18 @@ int pfi_import_tracks (pfi_img_t *img, const char *fname);
 int pfi_print_info (pfi_img_t *img);
 int pfi_list_tracks (pfi_img_t *img, int verb);
 
+int pfi_decode_text (pfi_img_t *img, const char *fname);
+int pfi_encode_text (pfi_img_t *img, const char *fname);
+
 int pfi_revolutions (pfi_img_t *img, const char *str);
 int pfi_slack (pfi_img_t *img, const char *str);
 int pfi_scale_tracks (pfi_img_t *img, double factor);
 int pfi_set_clock (pfi_img_t *img, unsigned long clock);
 int pfi_set_rpm (pfi_img_t *img, double rpm);
-int pfi_set_rpm_mac (pfi_img_t *img);
+int pfi_set_rpm_mac_490 (pfi_img_t *img);
+int pfi_set_rpm_mac_500 (pfi_img_t *img);
 int pfi_shift_index (pfi_img_t *img, long ofs);
+int pfi_wpcom (pfi_img_t *img);
 
 
 #endif

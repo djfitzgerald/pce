@@ -5,7 +5,7 @@
 /*****************************************************************************
  * File name:   src/utils/psi/list.c                                         *
  * Created:     2013-06-09 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2013-2018 Hampa Hug <hampa@hampa.ch>                     *
+ * Copyright:   (C) 2013-2019 Hampa Hug <hampa@hampa.ch>                     *
  *****************************************************************************/
 
 /*****************************************************************************
@@ -285,8 +285,15 @@ int psi_list_track_cb (psi_img_t *img, psi_trk_t *trk,
 				trk_flg |= PSI_TRK_BAD_ID;
 			}
 
-			if ((sct->s < 1) || (sct->s > trk->sct_cnt)) {
-				trk_flg |= PSI_TRK_RANGE;
+			if (sct->encoding == PSI_ENC_GCR) {
+				if (sct->s >= trk->sct_cnt) {
+					trk_flg |= PSI_TRK_RANGE;
+				}
+			}
+			else {
+				if ((sct->s < 1) || (sct->s > trk->sct_cnt)) {
+					trk_flg |= PSI_TRK_RANGE;
+				}
 			}
 
 			if (sct->n != 512) {
@@ -299,6 +306,14 @@ int psi_list_track_cb (psi_img_t *img, psi_trk_t *trk,
 
 			if (psi_sct_get_read_time (sct) != 0) {
 				trk_flg |= PSI_TRK_TIME;
+			}
+
+			if (sct->weak != NULL) {
+				trk_flg |= PSI_TRK_WEAK;
+			}
+
+			if (sct->next != NULL) {
+				trk_flg |= PSI_TRK_ALTERNATE;
 			}
 
 			if (sct->have_mfm_size) {
@@ -317,7 +332,7 @@ int psi_list_track_cb (psi_img_t *img, psi_trk_t *trk,
 		}
 	}
 
-	printf ("%2u %u  %2u",
+	printf ("%2u %u %2u",
 		c, h, trk->sct_cnt
 	);
 
@@ -351,6 +366,14 @@ int psi_list_track_cb (psi_img_t *img, psi_trk_t *trk,
 
 	if (sct_flg & PSI_FLAG_CRC_ID) {
 		fputs (" CRC-ID", stdout);
+	}
+
+	if (trk_flg & PSI_TRK_WEAK) {
+		fputs (" WEAK", stdout);
+	}
+
+	if (trk_flg & PSI_TRK_ALTERNATE) {
+		fputs (" ALT", stdout);
 	}
 
 	if (sct_flg & PSI_FLAG_CRC_DATA) {

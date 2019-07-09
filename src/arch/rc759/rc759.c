@@ -5,7 +5,7 @@
 /*****************************************************************************
  * File name:   src/arch/rc759/rc759.c                                       *
  * Created:     2012-06-29 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2012-2013 Hampa Hug <hampa@hampa.ch>                     *
+ * Copyright:   (C) 2012-2019 Hampa Hug <hampa@hampa.ch>                     *
  *****************************************************************************/
 
 /*****************************************************************************
@@ -708,6 +708,7 @@ static
 void rc759_setup_system (rc759_t *sim, ini_sct_t *ini)
 {
 	int           mem2;
+	int           fastboot;
 	unsigned long clock;
 	ini_sct_t     *sct;
 
@@ -722,9 +723,11 @@ void rc759_setup_system (rc759_t *sim, ini_sct_t *ini)
 
 	ini_get_bool (sct, "alt_mem_size", &mem2, 0);
 	ini_get_uint32 (sct, "clock", &clock, 6000000);
+	ini_get_bool (sct, "fastboot", &fastboot, 0);
 
-	pce_log_tag (MSG_INF, "SYSTEM:", "model=rc759 clock=%lu alt_mem_size=%d\n",
-		clock, mem2
+	pce_log_tag (MSG_INF, "SYSTEM:",
+		"model=rc759 clock=%lu alt_mem_size=%d fastboot=%d\n",
+		clock, mem2, fastboot
 	);
 
 	sim->cpu_clock_frq = clock;
@@ -733,6 +736,8 @@ void rc759_setup_system (rc759_t *sim, ini_sct_t *ini)
 	if (mem2) {
 		sim->flags |= RC759_FLAG_MEM2;
 	}
+
+	sim->fastboot = (fastboot != 0);
 }
 
 static
@@ -783,6 +788,10 @@ void rc759_setup_cpu (rc759_t *sim, ini_sct_t *ini)
 	}
 	else {
 		e86_set_ram (sim->cpu, NULL, 0);
+	}
+
+	if (sim->fastboot) {
+		sim->cpu->reset_flags = E86_FLG_C;
 	}
 }
 
@@ -921,19 +930,15 @@ void rc759_setup_rtc (rc759_t *sim, ini_sct_t *ini)
 static
 void rc759_setup_fdc (rc759_t *sim, ini_sct_t *ini)
 {
-	const char *fname0, *fname1;
-	ini_sct_t  *sct;
+	unsigned  id0, id1;
+	ini_sct_t *sct;
 
 	sct = ini_next_sct (ini, NULL, "fdc");
 
-	ini_get_string (sct, "file0", &fname0, NULL);
-	ini_get_string (sct, "file1", &fname1, NULL);
+	ini_get_uint16 (sct, "id0", &id0, 0);
+	ini_get_uint16 (sct, "id1", &id1, 1);
 
-	pce_log_tag (MSG_INF, "FDC:",
-		"file0=%s file1=%s\n",
-		(fname0 != NULL) ? fname0 : "<none>",
-		(fname1 != NULL) ? fname1 : "<none>"
-	);
+	pce_log_tag (MSG_INF, "FDC:", "drive0=%u drive1=%u\n", id0, id1);
 
 	rc759_fdc_init (&sim->fdc);
 
@@ -945,11 +950,8 @@ void rc759_setup_fdc (rc759_t *sim, ini_sct_t *ini)
 
 	rc759_fdc_set_disks (&sim->fdc, sim->dsks);
 
-	rc759_fdc_set_fname (&sim->fdc, 0, fname0);
-	rc759_fdc_set_fname (&sim->fdc, 1, fname1);
-
-	rc759_fdc_set_disk_id (&sim->fdc, 0, 0);
-	rc759_fdc_set_disk_id (&sim->fdc, 1, 1);
+	rc759_fdc_set_disk_id (&sim->fdc, 0, id0);
+	rc759_fdc_set_disk_id (&sim->fdc, 1, id1);
 
 	rc759_fdc_load (&sim->fdc, 0);
 	rc759_fdc_load (&sim->fdc, 1);
@@ -1167,6 +1169,8 @@ rc759_t *rc759_new (ini_sct_t *ini)
 	memset (sim, 0, sizeof (rc759_t));
 
 	sim->cfg = ini;
+
+	sim->disk_id = 0;
 
 	bps_init (&sim->bps);
 	rc759_setup_system (sim, ini);

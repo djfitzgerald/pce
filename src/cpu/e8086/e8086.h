@@ -5,7 +5,7 @@
 /*****************************************************************************
  * File name:   src/cpu/e8086/e8086.h                                        *
  * Created:     1996-04-28 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 1996-2018 Hampa Hug <hampa@hampa.ch>                     *
+ * Copyright:   (C) 1996-2019 Hampa Hug <hampa@hampa.ch>                     *
  *****************************************************************************/
 
 /*****************************************************************************
@@ -136,6 +136,9 @@ typedef struct e8086_t {
 	void             *hook_ext;
 	int              (*hook) (void *ext);
 
+	void             *trap_ext;
+	int              (*trap) (void *ext, unsigned n);
+
 	unsigned short   cur_ip;
 
 	unsigned         pq_size;
@@ -156,6 +159,8 @@ typedef struct e8086_t {
 	unsigned char    int_vec;
 	unsigned short   int_cs;
 	unsigned short   int_ip;
+
+	unsigned short   reset_flags;
 
 	e86_opcode_f     op[256];
 
@@ -389,6 +394,8 @@ unsigned long e86_get_addr_mask (e8086_t *c);
 void e86_set_inta_fct (e8086_t *c, void *ext, void *fct);
 
 void e86_set_hook_fct (e8086_t *c, void *ext, void *fct);
+
+void e86_set_trap_fct (e8086_t *c, void *ext, void *fct);
 
 void e86_set_ram (e8086_t *c, unsigned char *ram, unsigned long cnt);
 

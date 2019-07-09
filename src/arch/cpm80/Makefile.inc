@@ -37,6 +37,7 @@ PCE_CPM80_OBJ_EXT := \
 	src/devices/memory.o \
 	src/drivers/options.o \
 	src/lib/brkpt.o \
+	src/lib/cfg.o \
 	src/lib/cmd.o \
 	src/lib/console.o \
 	src/lib/getopt.o \
@@ -53,6 +54,7 @@ PCE_CPM80_OBJ_EXT := \
 	src/lib/sysdep.o \
 	$(CPU_8080_OBJ) \
 	$(DRV_BLK_OBJ) \
+	$(DRV_PRI_OBJ) \
 	$(DRV_PSI_OBJ) \
 	$(DRV_CHR_OBJ) \
 	$(LIBINI_OBJ)

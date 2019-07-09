@@ -30,6 +30,8 @@
 
 #include <stdlib.h>
 
+#include "hook.h"
+#include "msg.h"
 #include "pci.h"
 #include "sercons.h"
 #include "sim405.h"
@@ -51,7 +53,6 @@
 #include <lib/inidsk.h>
 #include <lib/iniram.h>
 #include <lib/load.h>
-#include <lib/msg.h>
 #include <lib/sysdep.h>
 
 #include <libini/libini.h>
@@ -73,6 +74,7 @@ void s405_setup_system (sim405_t *sim, ini_sct_t *ini)
 	const char    *model;
 	unsigned long uicinv;
 	unsigned long serial_clock;
+	int           sync_time_base;
 
 	sct = ini_next_sct (ini, NULL, "system");
 
@@ -83,12 +85,15 @@ void s405_setup_system (sim405_t *sim, ini_sct_t *ini)
 	ini_get_string (sct, "model", &model, "ppc405");
 	ini_get_uint32 (sct, "uic_invert", &uicinv, 0x0000007f);
 	ini_get_uint32 (sct, "serial_clock", &serial_clock, 115200);
+	ini_get_bool (sct, "sync_time_base", &sync_time_base, 1);
 
-	pce_log_tag (MSG_INF, "CPU:", "model=%s uic-inv=%08lX\n",
-		model, uicinv
+	pce_log_tag (MSG_INF, "CPU:", "model=%s uic-inv=%08lX sync_time_base=%d\n",
+		model, uicinv, sync_time_base
 	);
 
 	sim->ppc = p405_new ();
+
+	sim->sync_time_base = (sync_time_base != 0);
 
 	p405_set_mem_fct (sim->ppc, sim->mem,
 		&mem_get_uint8,
@@ -178,7 +183,7 @@ void s405_setup_serport (sim405_t *sim, ini_sct_t *ini)
 			e8250_set_buf_size (uart, 256, 256);
 			e8250_set_multichar (uart, multichar, multichar);
 			e8250_set_clock_mul (uart, clock_mul);
-			e8250_set_bit_clk_div (uart, S405_CLOCK / sim->serial_clock / 16);
+			e8250_set_bit_clk_div (uart, (S405_CLOCK / 16) / sim->serial_clock);
 
 			if (e8250_set_chip_str (uart, chip)) {
 				pce_log (MSG_ERR, "*** unknown UART chip (%s)\n", chip);
@@ -404,6 +409,8 @@ sim405_t *s405_new (ini_sct_t *ini)
 		sim->clk_div[i] = 0;
 	}
 
+	s405_hook_init (sim);
+
 	bps_init (&sim->bps);
 
 	dev_lst_init (&sim->devlst);
@@ -459,6 +466,8 @@ void s405_del (sim405_t *sim)
 	mem_del (sim->mem);
 
 	bps_free (&sim->bps);
+
+	s405_hook_free (sim);
 
 	free (sim);
 }
@@ -657,14 +666,12 @@ void s405_sync (sim405_t *sim)
 
 	if (vclk < rclk) {
 		p405_add_timer_clock (sim->ppc, rclk - vclk);
-
-		sim->serial_clock_count += rclk - vclk;
 	}
 }
 
 void s405_clock (sim405_t *sim, unsigned n)
 {
-	unsigned long clk;
+	unsigned long clk, ser;
 
 	if (sim->clk_div[0] >= 256) {
 		clk = sim->clk_div[0] & ~255UL;
@@ -690,23 +697,28 @@ void s405_clock (sim405_t *sim, unsigned n)
 
 			if (sim->clk_div[2] >= 65536) {
 				scon_check (sim);
-				s405_sync (sim);
+
+				if (sim->sync_time_base) {
+					s405_sync (sim);
+				}
 
 				sim->clk_div[2] &= 65535;
 			}
 		}
 	}
 
-	if (sim->serial_clock_count >= 16) {
+	ser = sim->serial_clock_count >> 10;
+
+	if (ser > 0) {
 		if (sim->serport[0] != NULL) {
-			e8250_clock (&sim->serport[0]->uart, 1);
+			e8250_clock (&sim->serport[0]->uart, ser);
 		}
 
 		if (sim->serport[1] != NULL) {
-			e8250_clock (&sim->serport[1]->uart, 1);
+			e8250_clock (&sim->serport[1]->uart, ser);
 		}
 
-		sim->serial_clock_count -= 16;
+		sim->serial_clock_count -= (ser << 4);
 	}
 
 	p405_clock (sim->ppc, n);
@@ -716,74 +728,4 @@ void s405_clock (sim405_t *sim, unsigned n)
 
 	sim->sync_clock_sim += n;
 	sim->serial_clock_count += n;
-}
-
-int s405_set_msg (sim405_t *sim, const char *msg, const char *val)
-{
-	/* a hack, for debugging only */
-	if (sim == NULL) {
-		sim = par_sim;
-	}
-
-	if (msg == NULL) {
-		msg = "";
-	}
-
-	if (val == NULL) {
-		val = "";
-	}
-
-	if (msg_is_prefix ("term", msg)) {
-		return (1);
-	}
-
-	if (msg_is_message ("emu.break", msg)) {
-		if (strcmp (val, "stop") == 0) {
-			sim->brk = PCE_BRK_STOP;
-			return (0);
-		}
-		else if (strcmp (val, "abort") == 0) {
-			sim->brk = PCE_BRK_ABORT;
-			return (0);
-		}
-		else if (strcmp (val, "") == 0) {
-			sim->brk = PCE_BRK_ABORT;
-			return (0);
-		}
-	}
-	else if (msg_is_message ("emu.stop", msg)) {
-		sim->brk = PCE_BRK_STOP;
-		return (0);
-	}
-	else if (msg_is_message ("emu.exit", msg)) {
-		sim->brk = PCE_BRK_ABORT;
-		return (0);
-	}
-
-	pce_log (MSG_DEB, "msg (\"%s\", \"%s\")\n", msg, val);
-
-	if (msg_is_message ("disk.commit", msg)) {
-		if (strcmp (val, "") == 0) {
-			if (dsks_commit (sim->dsks)) {
-				pce_log (MSG_ERR, "commit failed for at least one disk\n");
-				return (1);
-			}
-		}
-		else {
-			unsigned d;
-
-			d = strtoul (val, NULL, 0);
-
-			if (dsks_set_msg (sim->dsks, d, "commit", NULL)) {
-				pce_log (MSG_ERR, "commit failed (%s)\n", val);
-				return (1);
-			}
-		}
-
-		return (0);
-	}
-
-	pce_log (MSG_INF, "unhandled message (\"%s\", \"%s\")\n", msg, val);
-
-	return (1);
 }

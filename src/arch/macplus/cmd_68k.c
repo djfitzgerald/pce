@@ -5,7 +5,7 @@
 /*****************************************************************************
  * File name:   src/arch/macplus/cmd_68k.c                                   *
  * Created:     2007-04-15 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2007-2018 Hampa Hug <hampa@hampa.ch>                     *
+ * Copyright:   (C) 2007-2019 Hampa Hug <hampa@hampa.ch>                     *
  *****************************************************************************/
 
 /*****************************************************************************
@@ -33,6 +33,7 @@
 #include <lib/cmd.h>
 #include <lib/console.h>
 #include <lib/log.h>
+#include <lib/msgdsk.h>
 #include <lib/monitor.h>
 #include <lib/sysdep.h>
 
@@ -47,7 +48,7 @@ mon_cmd_t par_cmd[] = {
 	{ "reset", "", "reset" },
 	{ "rte", "", "execute to next rte" },
 	{ "r", "reg [val]", "get or set a register" },
-	{ "s", "[what]", "print status (cpu|mem|scc|via)" },
+	{ "s", "[what]", "print status (cpu|disks|mem|scc|via)" },
 	{ "t", "[cnt]", "execute cnt instructions [1]" },
 	{ "u", "[[-]addr [cnt]]", "disassemble" }
 };
@@ -59,7 +60,7 @@ static
 void mac_dasm_str (char *dst, e68_dasm_t *op)
 {
 	unsigned   i, n;
-	char       tmp[256];
+	char       tmp[512];
 	const char *ins;
 
 	strcpy (dst, "");
@@ -210,14 +211,25 @@ void mac_prt_state_cpu (e68000_t *c)
 static
 void mac_prt_state_scc (macplus_t *sim)
 {
-	unsigned i;
-	e8530_t  *scc;
+	unsigned    i;
+	e8530_t     *scc;
+	e8530_chn_t *chn;
+
+	static const char p[4] = { 'N', 'O', 'E', ' ' };
+	static const char *s[5] = { "0", "", "1", "1.5", "2" };
 
 	scc = &sim->scc;
 
 	pce_prt_sep ("8530-SCC");
 
-	pce_printf ("  IRQ=%u\n", scc->irq_val);
+	pce_printf ("IRQ=%u\n", scc->irq_val);
+
+	for (i = 0; i < 2; i++) {
+		chn = scc->chn + i;
+		pce_printf ("CHN%u=%u%c%u%s\n",
+			i, chn->bps, p[chn->parity & 3], chn->bpc, s[chn->stop]
+		);
+	}
 
 	for (i = 0; i < 16; i++) {
 		pce_printf (
@@ -284,6 +296,9 @@ void mac_prt_state (macplus_t *sim, const char *str)
 	while (!cmd_match_eol (&cmd)) {
 		if (cmd_match (&cmd, "cpu")) {
 			mac_prt_state_cpu (sim->cpu);
+		}
+		else if (cmd_match (&cmd, "disks")) {
+			dsks_print_info (sim->dsks);
 		}
 		else if (cmd_match (&cmd, "mem")) {
 			mac_prt_state_mem (sim);
@@ -619,6 +634,52 @@ void mac_cmd_halt (cmd_t *cmd, macplus_t *sim)
 	mac_prt_state_cpu (sim->cpu);
 }
 
+static
+void mac_cmd_hm (cmd_t *cmd)
+{
+	pce_puts (
+		"emu.cpu.model        \"68000\" | \"68010\" | \"68020\"\n"
+		"emu.cpu.speed        <factor>\n"
+		"emu.cpu.speed.step   <adjustment>\n"
+		"\n"
+		"emu.exit\n"
+		"\n"
+		"emu.iwm.insert       <drive>:<filename>\n"
+		"emu.iwm.ro           <drive>\n"
+		"emu.iwm.rw           <drive>\n"
+		"emu.iwm.status\n"
+		"\n"
+		"emu.mac.insert       <drive>\n"
+		"\n"
+		"emu.pause            \"0\" | \"1\"\n"
+		"emu.pause.toggle\n"
+		"emu.realtime         \"0\" | \"1\"\n"
+		"emu.realtime.toggle\n"
+		"emu.reset\n"
+		"\n"
+		"emu.ser1.driver      <driver>\n"
+		"emu.ser1.file        <filename>\n"
+		"emu.ser1.multi       <count>\n"
+		"emu.ser2.driver      <driver>\n"
+		"emu.ser2.file        <filename>\n"
+		"emu.ser2.multi       <count>\n"
+		"\n"
+		"emu.stop\n"
+		"\n"
+		"emu.video.brightness <val>\n"
+		"\n"
+		"emu.term.fullscreen  \"0\" | \"1\"\n"
+		"emu.term.fullscreen.toggle\n"
+		"emu.term.grab\n"
+		"emu.term.release\n"
+		"emu.term.screenshot  [<filename>]\n"
+		"emu.term.title       <title>\n"
+		"\n"
+	);
+
+	msg_dsk_print_help();
+}
+
 /*
  * p - step
  */
@@ -947,6 +1008,9 @@ int mac_cmd (macplus_t *sim, cmd_t *cmd)
 	}
 	else if (cmd_match (cmd, "halt")) {
 		mac_cmd_halt (cmd, sim);
+	}
+	else if (cmd_match (cmd, "hm")) {
+		mac_cmd_hm (cmd);
 	}
 	else if (cmd_match (cmd, "p")) {
 		mac_cmd_p (cmd, sim);

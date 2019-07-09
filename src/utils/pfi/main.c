@@ -5,7 +5,7 @@
 /*****************************************************************************
  * File name:   src/utils/pfi/main.c                                         *
  * Created:     2012-01-19 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2012-2018 Hampa Hug <hampa@hampa.ch>                     *
+ * Copyright:   (C) 2012-2019 Hampa Hug <hampa@hampa.ch>                     *
  *****************************************************************************/
 
 /*****************************************************************************
@@ -73,6 +73,7 @@ unsigned long par_weak_i2 = 0;
 unsigned long par_clock_tolerance = 40;
 
 unsigned      par_fold_mode = PFI_FOLD_MAXRUN;
+unsigned      par_fold_window = 32;
 unsigned long par_fold_max = 16384;
 
 
@@ -128,20 +129,24 @@ void print_help (void)
 		"  scale <factor>         Scale tracks by factor\n"
 		"  set-clock <clock>      Set the clock rate\n"
 		"  set-rpm <rpm>          Set average RPM\n"
-		"  set-rpm-mac            Set Macintosh RPMs\n"
+		"  set-rpm-mac            Set Macintosh RPMs at 500 kbit/s\n"
+		"  set-rpm-mac-490        Set Macintosh RPMs at 489.6 kbit/s\n"
+		"  set-rpm-mac-500        Set Macintosh RPMs at 500 kbit/s\n"
 		"  shift-index <offset>   Shift the index by offset clock cycles\n"
+		"  wpcom                  Simulate write precompensation\n"
 		"\n"
 		"parameters are:\n"
 		"  clock-tolerance, fold-max, fold-mode, pfi-clock, slack1, slack2, weak-bits\n"
 		"\n"
 		"decode types are:\n"
-		"  pri, pri-mac, raw, gcr-raw, mfm-raw\n"
+		"  pri, pri-mac, pri-mac-490, pri-mac-500,"
+		" raw, gcr-raw, mfm-raw\n"
 		"\n"
 		"encode types are:\n"
 		"  pri\n"
 		"\n"
 		"file formats are:\n"
-		"  pfi, raw, scp\n",
+		"  a2r, pfi, raw, scp\n",
 		stdout
 	);
 
@@ -154,13 +159,129 @@ void print_version (void)
 	fputs (
 		"pfi version " PCE_VERSION_STR
 		"\n\n"
-		"Copyright (C) 2012-2018 Hampa Hug <hampa@hampa.ch>\n",
+		"Copyright (C) 2012-2019 Hampa Hug <hampa@hampa.ch>\n",
 		stdout
 	);
 
 	fflush (stdout);
 }
 
+int pfi_parse_double (const char *str, double *val)
+{
+	char *end;
+
+	if ((str == NULL) || (*str == 0)) {
+		fprintf (stderr, "%s: bad value (%s)\n", arg0, str);
+		return (1);
+	}
+
+	*val = strtod (str, &end);
+
+	if ((end != NULL) && (*end == 0)) {
+		fprintf (stderr, "%s: bad value (%s)\n", arg0, str);
+		return (0);
+	}
+
+	return (1);
+}
+
+int pfi_parse_long (const char *str, long *val)
+{
+	char *end;
+
+	if ((str == NULL) || (*str == 0)) {
+		fprintf (stderr, "%s: bad value (%s)\n", arg0, str);
+		return (1);
+	}
+
+	*val = strtol (str, &end, 0);
+
+	if ((end != NULL) && (*end == 0)) {
+		return (0);
+	}
+
+	fprintf (stderr, "%s: bad value (%s)\n", arg0, str);
+
+	return (1);
+}
+
+int pfi_parse_ulong (const char *str, unsigned long *val)
+{
+	char *end;
+
+	if ((str == NULL) || (*str == 0)) {
+		fprintf (stderr, "%s: bad value (%s)\n", arg0, str);
+		return (1);
+	}
+
+	*val = strtoul (str, &end, 0);
+
+	if ((end != NULL) && (*end == 0)) {
+		return (0);
+	}
+
+	fprintf (stderr, "%s: bad value (%s)\n", arg0, str);
+
+	return (1);
+}
+
+int pfi_parse_uint (const char *str, unsigned *val)
+{
+	unsigned long tmp;
+
+	if (pfi_parse_ulong (str, &tmp)) {
+		return (1);
+	}
+
+	*val = tmp;
+
+	return (0);
+}
+
+int pfi_parse_bool (const char *str, int *val)
+{
+	unsigned long tmp;
+
+	if (pfi_parse_ulong (str, &tmp)) {
+		return (1);
+	}
+
+	*val = tmp != 0;
+
+	return (0);
+}
+
+int pfi_parse_rate (const char *str, unsigned long *val)
+{
+	char *end;
+
+	if ((str == NULL) || (*str == 0)) {
+		fprintf (stderr, "%s: bad value (%s)\n", arg0, str);
+		return (1);
+	}
+
+	*val = strtoul (str, &end, 0);
+
+	if ((end == NULL) || (*end == 0)) {
+		return (0);
+	}
+
+	if ((*end == 'k') || (*end == 'K')) {
+		*val *= 1000;
+		end += 1;
+	}
+	else if ((*end == 'm') || (*end == 'M')) {
+		*val *= 1000000;
+		end += 1;
+	}
+
+	if (*end != 0) {
+		fprintf (stderr, "%s: bad value (%s)\n", arg0, str);
+		return (1);
+	}
+
+	return (0);
+}
 
 int pfi_parse_range (const char *str, unsigned long *v1, unsigned long *v2, char *all, char *inv)
 {
@@ -365,20 +486,6 @@ int pfi_operation (pfi_img_t **img, const char *op, int argc, char **argv)
 
 		r = pfi_encode (*img, optarg1[0], optarg2[0]);
 	}
-	else if (strcmp (op, "export") == 0) {
-		if (pce_getopt (argc, argv, &optarg1, NULL) != 0) {
-			return (1);
-		}
-
-		r = pfi_export_tracks (*img, optarg1[0]);
-	}
-	else if (strcmp (op, "import") == 0) {
-		if (pce_getopt (argc, argv, &optarg1, NULL) != 0) {
-			return (1);
-		}
-
-		r = pfi_import_tracks (*img, optarg1[0]);
-	}
 	else if (strcmp (op, "info") == 0) {
 		r = pfi_print_info (*img);
 	}
@@ -397,7 +504,9 @@ int pfi_operation (pfi_img_t **img, const char *op, int argc, char **argv)
 			return (1);
 		}
 
-		factor = strtod (optarg1[0], NULL);
+		if (pfi_parse_double (optarg1[0], &factor)) {
+			return (1);
+		}
 
 		r = pfi_scale_tracks (*img, factor);
 	}
@@ -408,12 +517,20 @@ int pfi_operation (pfi_img_t **img, const char *op, int argc, char **argv)
 			return (1);
 		}
 
-		rpm = strtod (optarg1[0], NULL);
+		if (pfi_parse_double (optarg1[0], &rpm)) {
+			return (1);
+		}
 
 		r = pfi_set_rpm (*img, rpm);
 	}
 	else if (strcmp (op, "set-rpm-mac") == 0) {
-		r = pfi_set_rpm_mac (*img);
+		r = pfi_set_rpm_mac_500 (*img);
+	}
+	else if (strcmp (op, "set-rpm-mac-490") == 0) {
+		r = pfi_set_rpm_mac_490 (*img);
+	}
+	else if (strcmp (op, "set-rpm-mac-500") == 0) {
+		r = pfi_set_rpm_mac_500 (*img);
 	}
 	else if (strcmp (op, "set-clock") == 0) {
 		unsigned long clk;
@@ -422,7 +539,9 @@ int pfi_operation (pfi_img_t **img, const char *op, int argc, char **argv)
 			return (1);
 		}
 
-		clk = strtoul (optarg1[0], NULL, 0);
+		if (pfi_parse_rate (optarg1[0], &clk)) {
+			return (1);
+		}
 
 		r = pfi_set_clock (*img, clk);
 	}
@@ -433,7 +552,9 @@ int pfi_operation (pfi_img_t **img, const char *op, int argc, char **argv)
 			return (1);
 		}
 
-		ofs = strtol (optarg1[0], NULL, 0);
+		if (pfi_parse_long (optarg1[0], &ofs)) {
+			return (1);
+		}
 
 		r = pfi_shift_index (*img, ofs);
 	}
@@ -443,6 +564,9 @@ int pfi_operation (pfi_img_t **img, const char *op, int argc, char **argv)
 		}
 
 		r = pfi_slack (*img, optarg1[0]);
+	}
+	else if (strcmp (op, "wpcom") == 0) {
+		r = pfi_wpcom (*img);
 	}
 	else {
 		fprintf (stderr, "%s: unknown operation (%s)\n", arg0, op);
@@ -530,10 +654,14 @@ static
 int pfi_set_parameter (const char *name, const char *val)
 {
 	if (strcmp (name, "clock-tolerance") == 0) {
-		par_clock_tolerance = strtoul (val, NULL, 0);
+		if (pfi_parse_ulong (val, &par_clock_tolerance)) {
+			return (1);
+		}
 	}
 	else if (strcmp (name, "fold-max") == 0) {
-		par_fold_max = strtoul (val, NULL, 0);
+		if (pfi_parse_ulong (val, &par_fold_max)) {
+			return (1);
+		}
 	}
 	else if (strcmp (name, "fold-mode") == 0) {
 		if (strcmp (val, "none") == 0) {
@@ -549,27 +677,59 @@ int pfi_set_parameter (const char *name, const char *val)
 			return (1);
 		}
 	}
+	else if (strcmp (name, "fold-window") == 0) {
+		if (pfi_parse_uint (val, &par_fold_window)) {
+			return (1);
+		}
+	}
 	else if (strcmp (name, "pfi-clock") == 0) {
-		par_pfi_clock = strtoul (val, NULL, 0);
+		if (pfi_parse_rate (val, &par_pfi_clock)) {
+			return (1);
+		}
+	}
+	else if (strcmp (name, "slack") == 0) {
+		if (pfi_parse_uint (val, &par_slack1)) {
+			return (1);
+		}
+
+		par_slack1 %= 100;
+		par_slack2 = par_slack1;
 	}
 	else if (strcmp (name, "slack1") == 0) {
-		par_slack1 = strtoul (val, NULL, 0) % 100;
+		if (pfi_parse_uint (val, &par_slack1)) {
+			return (1);
+		}
+
+		par_slack1 %= 100;
 	}
 	else if (strcmp (name, "slack2") == 0) {
-		par_slack2 = strtoul (val, NULL, 0) % 100;
+		if (pfi_parse_uint (val, &par_slack2)) {
+			return (1);
+		}
+
+		par_slack2 %= 100;
 	}
 	else if (strcmp (name, "weak-bits") == 0) {
-		par_weak_bits = (strtoul (val, NULL, 0) != 0);
+		if (pfi_parse_bool (val, &par_weak_bits)) {
+			return (1);
+		}
 	}
 	else if (strcmp (name, "weak-bits-margin") == 0) {
-		par_weak_i1 = strtoul (val, NULL, 0);
+		if (pfi_parse_ulong (val, &par_weak_i1)) {
+			return (1);
+		}
+
 		par_weak_i2 = par_weak_i1;
 	}
 	else if (strcmp (name, "weak-bits-i1") == 0) {
-		par_weak_i1 = strtoul (val, NULL, 0);
+		if (pfi_parse_ulong (val, &par_weak_i1)) {
+			return (1);
+		}
 	}
 	else if (strcmp (name, "weak-bits-i2") == 0) {
-		par_weak_i2 = strtoul (val, NULL, 0);
+		if (pfi_parse_ulong (val, &par_weak_i2)) {
+			return (1);
+		}
 	}
 	else {
 		return (1);
@@ -709,15 +869,15 @@ int main (int argc, char **argv)
 			break;
 
 		case 'r':
-			par_data_rate = strtoul (optarg[0], NULL, 0);
-
-			if (par_data_rate <= 1000) {
-				par_data_rate *= 1000;
+			if (pfi_parse_rate (optarg[0], &par_data_rate)) {
+				return (1);
 			}
 			break;
 
 		case 'R':
-			par_revolution = strtoul (optarg[0], NULL, 0);
+			if (pfi_parse_uint (optarg[0], &par_revolution)) {
+				return (1);
+			}
 			break;
 
 		case 's':

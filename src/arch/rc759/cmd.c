@@ -5,7 +5,7 @@
 /*****************************************************************************
  * File name:   src/arch/rc759/cmd.c                                         *
  * Created:     2012-06-29 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2012-2017 Hampa Hug <hampa@hampa.ch>                     *
+ * Copyright:   (C) 2012-2019 Hampa Hug <hampa@hampa.ch>                     *
  *****************************************************************************/
 
 /*****************************************************************************
@@ -31,6 +31,7 @@
 #include <lib/console.h>
 #include <lib/log.h>
 #include <lib/monitor.h>
+#include <lib/msgdsk.h>
 #include <lib/sysdep.h>
 
 
@@ -48,7 +49,7 @@ static mon_cmd_t par_cmd[] = {
 	{ "pq", "[c|f|s]", "prefetch queue clear/fill/status" },
 	{ "p", "[cnt]", "execute cnt instructions, without trace in calls [1]" },
 	{ "r", "[reg val]", "set a register" },
-	{ "s", "[what]", "print status (cpu|icu|mem||ppi|pic|rc759|tcu|time)" },
+	{ "s", "[what]", "print status (cpu|disks|icu|mem||ppi|pic|rc759|tcu|time)" },
 	{ "t", "[cnt]", "execute cnt instructions [1]" },
 	{ "u", "[addr [cnt [mode]]]", "disassemble" }
 };
@@ -678,10 +679,6 @@ void rc759_cmd_hm (cmd_t *cmd)
 		"emu.cpu.speed        <factor>\n"
 		"emu.cpu.speed.step   <adjustment>\n"
 		"\n"
-		"emu.disk.commit      [<drive>]\n"
-		"emu.disk.eject       <drive>\n"
-		"emu.disk.insert      <drive>:<fname>\n"
-		"\n"
 		"emu.parport1.driver  <driver>\n"
 		"emu.parport1.file    <filename>\n"
 		"emu.parport2.driver  <driver>\n"
@@ -693,7 +690,10 @@ void rc759_cmd_hm (cmd_t *cmd)
 		"emu.term.release\n"
 		"emu.term.screenshot  [<filename>]\n"
 		"emu.term.title       <title>\n"
+		"\n"
 	);
+
+	msg_dsk_print_help();
 }
 
 static
@@ -1100,6 +1100,9 @@ void rc759_cmd_s (cmd_t *cmd, rc759_t *sim)
 		}
 		else if (cmd_match (cmd, "cpu")) {
 			print_state_cpu (sim->cpu);
+		}
+		else if (cmd_match (cmd, "disks")) {
+			dsks_print_info (sim->dsks);
 		}
 		else if (cmd_match (cmd, "dma")) {
 			print_state_dma (&sim->dma);

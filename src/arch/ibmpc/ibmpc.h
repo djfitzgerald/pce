@@ -5,7 +5,7 @@
 /*****************************************************************************
  * File name:   src/arch/ibmpc/ibmpc.h                                       *
  * Created:     2001-05-01 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2001-2017 Hampa Hug <hampa@hampa.ch>                     *
+ * Copyright:   (C) 2001-2019 Hampa Hug <hampa@hampa.ch>                     *
  *****************************************************************************/
 
 /*****************************************************************************
@@ -25,10 +25,13 @@
 
 
 #include "cassette.h"
+#include "covox.h"
 #include "ems.h"
 #include "keyboard.h"
 #include "speaker.h"
 #include "xms.h"
+
+#include <chipset/clock/mc146818a.h>
 
 #include <chipset/82xx/e8237.h>
 #include <chipset/82xx/e8250.h>
@@ -56,9 +59,6 @@
 #include <libini/libini.h>
 
 
-
-
-
 typedef struct ibmpc_t {
 	e8086_t            *cpu;
 	video_t            *video;
@@ -79,6 +79,7 @@ typedef struct ibmpc_t {
 	pc_kbd_t           kbd;
 	pc_cassette_t      *cas;
 	pc_speaker_t       spk;
+	pc_covox_t         *cov;
 
 	unsigned           model;
 
@@ -104,6 +105,7 @@ typedef struct ibmpc_t {
 	bp_set_t           bps;
 
 	unsigned           bootdrive;
+	unsigned           disk_id;
 
 	unsigned long      dma_page[4];
 
@@ -117,6 +119,8 @@ typedef struct ibmpc_t {
 
 	/* allow int 1a to get real time */
 	int                support_rtc;
+
+	char               force_keyboard_enable;
 
 	unsigned           fd_cnt;
 	unsigned           hd_cnt;
@@ -132,6 +136,8 @@ typedef struct ibmpc_t {
 
 	unsigned           current_int;
 
+	unsigned           mouse_button;
+
 	unsigned long      clk_div[4];
 
 	unsigned long      clock1;
@@ -140,6 +146,12 @@ typedef struct ibmpc_t {
 	unsigned           brk;
 	char               pause;
 	char               trace;
+
+	unsigned           atari_pc_turbo;
+	unsigned char      atari_pc_port34;
+	unsigned char      atari_pc_switches;
+	unsigned char      atari_pc_rtc_port;
+	mc146818a_t        *atari_pc_rtc;
 } ibmpc_t;
 
 

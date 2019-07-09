@@ -5,7 +5,7 @@
 /*****************************************************************************
  * File name:   src/utils/pfi/track-edit.c                                   *
  * Created:     2013-12-27 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2013-2018 Hampa Hug <hampa@hampa.ch>                     *
+ * Copyright:   (C) 2013-2019 Hampa Hug <hampa@hampa.ch>                     *
  *****************************************************************************/
 
 /*****************************************************************************
@@ -34,10 +34,11 @@ int pfi_revolutions_cb (pfi_img_t *img, pfi_trk_t *trk, unsigned long c, unsigne
 {
 	unsigned      rev1, rev2;
 	unsigned long pos1, pos2, add1, add2;
-	unsigned long pulse, index, clk1, clk2;
+	unsigned long clk1, clk2;
+	uint32_t      pulse, index;
 	pfi_trk_t     *dst;
 
-	if (trk->idx_cnt < 2) {
+	if (trk->index_cnt < 2) {
 		return (0);
 	}
 
@@ -48,19 +49,19 @@ int pfi_revolutions_cb (pfi_img_t *img, pfi_trk_t *trk, unsigned long c, unsigne
 		rev1 = 1;
 	}
 
-	if (rev2 > (trk->idx_cnt - 1)) {
-		rev2 = trk->idx_cnt - 1;
+	if (rev2 > (trk->index_cnt - 1)) {
+		rev2 = trk->index_cnt - 1;
 	}
 
 	if (rev2 < rev1) {
 		return (1);
 	}
 
-	pos1 = trk->idx[rev1 - 1];
-	pos2 = trk->idx[rev2];
+	pos1 = trk->index[rev1 - 1];
+	pos2 = trk->index[rev2];
 
-	add1 = (par_slack1 * (trk->idx[rev1] - trk->idx[rev1 - 1])) / 100;
-	add2 = (par_slack2 * (trk->idx[rev2] - trk->idx[rev2 - 1])) / 100;
+	add1 = (par_slack1 * (trk->index[rev1] - trk->index[rev1 - 1])) / 100;
+	add2 = (par_slack2 * (trk->index[rev2] - trk->index[rev2 - 1])) / 100;
 
 	pos1 = (pos1 < add1) ? 0 : (pos1 - add1);
 	pos2 = pos2 + add2;
@@ -120,7 +121,11 @@ int pfi_slack (pfi_img_t *img, const char *str)
 {
 	unsigned revs[2];
 
-	par_slack1 = strtoul (str, NULL, 0) % 100;
+	if (pfi_parse_uint (str, &par_slack1)) {
+		return (1);
+	}
+
+	par_slack1 %= 100;
 	par_slack2 = par_slack1;
 
 	revs[0] = 0;
@@ -205,14 +210,14 @@ int pfi_set_rpm_cb (pfi_img_t *img, pfi_trk_t *trk, unsigned long c, unsigned lo
 
 	rpm = opaque;
 
-	if (trk->idx_cnt < 2) {
+	if (trk->index_cnt < 2) {
 		return (0);
 	}
 
 	clk = pfi_trk_get_clock (trk);
-	len = trk->idx[trk->idx_cnt - 1] - trk->idx[0];
+	len = trk->index[trk->index_cnt - 1] - trk->index[0];
 
-	rat = (60.0 * clk * (trk->idx_cnt - 1)) / (*rpm * len);
+	rat = (60.0 * clk * (trk->index_cnt - 1)) / (*rpm * len);
 	mul = (unsigned long) (16.0 * 65536.0 * rat);
 	div = 16UL * 65536;
 
@@ -243,23 +248,36 @@ int pfi_set_rpm (pfi_img_t *img, double rpm)
 static
 int pfi_set_rpm_mac_cb (pfi_img_t *img, pfi_trk_t *trk, unsigned long c, unsigned long h, void *opaque)
 {
+	unsigned      speed;
 	unsigned long clk, len;
 	double        rpm, rat;
 	unsigned long mul, div;
-	static double rpmtab[] = {
-		393.38, 429.17, 472.14, 524.57, 590.11
+
+	static double rpmtab_490[] = {
+		393.5641, 429.3426, 472.2769, 524.7521, 590.3461
 	};
 
-	if (trk->idx_cnt < 2) {
+	static double rpmtab_500[] = {
+		401.9241, 438.4626, 482.3089, 535.8988, 602.8861
+	};
+
+	if (trk->index_cnt < 2) {
 		return (0);
 	}
 
-	rpm = rpmtab[(c < 80) ? (c / 16) : 4];
+	speed = *(unsigned *) opaque;
+
+	if (speed == 1) {
+		rpm = rpmtab_490[(c < 80) ? (c / 16) : 4];
+	}
+	else {
+		rpm = rpmtab_500[(c < 80) ? (c / 16) : 4];
+	}
 
 	clk = pfi_trk_get_clock (trk);
-	len = trk->idx[trk->idx_cnt - 1] - trk->idx[0];
+	len = trk->index[trk->index_cnt - 1] - trk->index[0];
 
-	rat = (60.0 * clk * (trk->idx_cnt - 1)) / (rpm * len);
+	rat = (60.0 * clk * (trk->index_cnt - 1)) / (rpm * len);
 	mul = (unsigned long) (16.0 * 65536.0 * rat);
 	div = 16UL * 65536;
 
@@ -281,9 +299,22 @@ int pfi_set_rpm_mac_cb (pfi_img_t *img, pfi_trk_t *trk, unsigned long c, unsigne
 	return (0);
 }
 
-int pfi_set_rpm_mac (pfi_img_t *img)
+int pfi_set_rpm_mac_490 (pfi_img_t *img)
 {
-	return (pfi_for_all_tracks (img, pfi_set_rpm_mac_cb, NULL));
+	unsigned speed;
+
+	speed = 1;
+
+	return (pfi_for_all_tracks (img, pfi_set_rpm_mac_cb, &speed));
+}
+
+int pfi_set_rpm_mac_500 (pfi_img_t *img)
+{
+	unsigned speed;
+
+	speed = 2;
+
+	return (pfi_for_all_tracks (img, pfi_set_rpm_mac_cb, &speed));
 }
 
 
@@ -298,4 +329,46 @@ int pfi_shift_index_cb (pfi_img_t *img, pfi_trk_t *trk, unsigned long c, unsigne
 int pfi_shift_index (pfi_img_t *img, long ofs)
 {
 	return (pfi_for_all_tracks (img, pfi_shift_index_cb, &ofs));
+}
+
+
+static
+int pfi_wpcom_cb (pfi_img_t *img, pfi_trk_t *trk, unsigned long c, unsigned long h, void *opaque)
+{
+	unsigned long i, n;
+	uint32_t      p1, p2, p3;
+	uint32_t      dif;
+
+	if (trk->pulse_cnt < 2) {
+		return (0);
+	}
+
+	n = trk->pulse_cnt - 1;
+
+	for (i = 1; i < n; i++) {
+		p1 = trk->pulse[i - 1];
+		p2 = trk->pulse[i];
+		p3 = trk->pulse[i + 1];
+
+		if ((2 * p2) >= (p1 + p3)) {
+			continue;
+		}
+
+		dif = (p1 + p3 - 2 * p2) / 8;
+
+		if (dif >= p2) {
+			continue;
+		}
+
+		trk->pulse[i - 1] += dif / 2;
+		trk->pulse[i] -= dif;
+		trk->pulse[i + 1] += (dif + 1) / 2;
+	}
+
+	return (0);
+}
+
+int pfi_wpcom (pfi_img_t *img)
+{
+	return (pfi_for_all_tracks (img, pfi_wpcom_cb, NULL));
 }

@@ -5,7 +5,7 @@
 /*****************************************************************************
  * File name:   src/drivers/pfi/pfi-kryo.c                                   *
  * Created:     2012-01-20 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2012-2018 Hampa Hug <hampa@hampa.ch>                     *
+ * Copyright:   (C) 2012-2019 Hampa Hug <hampa@hampa.ch>                     *
  *****************************************************************************/
 
 /*****************************************************************************
@@ -20,6 +20,7 @@
  *****************************************************************************/
 
 
+#include <stdint.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -476,6 +477,8 @@ int kryo_load_track_ch (FILE *fp, pfi_img_t *img, unsigned long c, unsigned long
 
 	r = kryo_load_track (&kry, trk);
 
+	pfi_trk_clean (trk);
+
 	kryo_load_free (&kry);
 
 	return (r);
@@ -663,7 +666,7 @@ static
 int kryo_save_track_ch (FILE *fp, pfi_trk_t *trk)
 {
 	unsigned           i;
-	unsigned long      val, ofs;
+	uint32_t           val, ofs;
 	unsigned long      pos, clk;
 	unsigned long long mul, div, tmp, rem;
 

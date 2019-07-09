@@ -39,8 +39,10 @@ PCE_SIMARM_OBJ_EXT := \
 	src/devices/serport.o \
 	src/drivers/options.o \
 	src/lib/brkpt.o \
+	src/lib/cfg.o \
 	src/lib/cmd.o \
 	src/lib/console.o \
+	src/lib/getopt.o \
 	src/lib/ihex.o \
 	src/lib/iniata.o \
 	src/lib/inidsk.o \
@@ -55,6 +57,7 @@ PCE_SIMARM_OBJ_EXT := \
 	src/lib/sysdep.o \
 	$(CPU_ARM_OBJ) \
 	$(DRV_BLK_OBJ) \
+	$(DRV_PRI_OBJ) \
 	$(DRV_PSI_OBJ) \
 	$(DRV_CHR_OBJ) \
 	$(LIBINI_OBJ)
