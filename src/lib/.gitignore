@@ -16,3 +16,5 @@
 /string.o
 /sysdep.o
 /tun.o
+/cfg.o
+/msgdsk.o
