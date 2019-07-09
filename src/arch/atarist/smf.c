@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/arch/atarist/smf.c                                       *
- * Created:     2013-06-23 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2013-2016 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/arch/atarist/smf.c                                       
+ * @date       2013-06-23 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2013-2016 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

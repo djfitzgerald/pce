@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/chipset/wd179x.c                                         *
- * Created:     2012-07-05 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2012-2017 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/chipset/wd179x.c                                         
+ * @date       2012-07-05 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2012-2017 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/arch/sim6502/console.c                                   *
- * Created:     2004-05-31 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2004-2009 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/arch/sim6502/console.c                                   
+ * @date       2004-05-31 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2004-2009 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

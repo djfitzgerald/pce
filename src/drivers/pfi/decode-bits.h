@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/drivers/pfi/decode-bits.h                                *
- * Created:     2013-12-25 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2013-2017 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/drivers/pfi/decode-bits.h                                
+ * @date       2013-12-25 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2013-2017 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/drivers/psi/psi-img-pfdc1.c                              *
- * Created:     2012-01-30 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2012-2013 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/drivers/psi/psi-img-pfdc1.c                              
+ * @date       2012-01-30 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2012-2013 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

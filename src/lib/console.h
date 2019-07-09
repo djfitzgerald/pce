@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/lib/console.h                                            *
- * Created:     2006-06-19 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2006-2019 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/lib/console.h                                            
+ * @date       2006-06-19 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2006-2019 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

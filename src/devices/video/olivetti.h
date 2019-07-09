@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/devices/video/olivetti.h                                 *
- * Created:     2011-09-26 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2011-2017 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/devices/video/olivetti.h                                 
+ * @date       2011-09-26 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2011-2017 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

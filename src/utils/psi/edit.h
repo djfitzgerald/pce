@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/utils/psi/edit.h                                         *
- * Created:     2013-06-09 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2013 Hampa Hug <hampa@hampa.ch>                          *
- *****************************************************************************/
+/**
+ * @file       src/utils/psi/edit.h                                         
+ * @date       2013-06-09 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2013 Hampa Hug <hampa@hampa.ch>                             
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

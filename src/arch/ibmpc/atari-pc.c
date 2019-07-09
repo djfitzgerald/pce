@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/arch/ibmpc/atari-pc.c                                    *
- * Created:     2018-09-01 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2018 Hampa Hug <hampa@hampa.ch>                          *
- *****************************************************************************/
+/**
+ * @file       src/arch/ibmpc/atari-pc.c                                    
+ * @date       2018-09-01 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2018 Hampa Hug <hampa@hampa.ch>                             
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

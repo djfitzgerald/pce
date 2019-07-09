@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/arch/atarist/rp5c15.h                                    *
- * Created:     2013-06-20 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2013 Hampa Hug <hampa@hampa.ch>                          *
- *****************************************************************************/
+/**
+ * @file       src/arch/atarist/rp5c15.h                                    
+ * @date       2013-06-20 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2013 Hampa Hug <hampa@hampa.ch>                             
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

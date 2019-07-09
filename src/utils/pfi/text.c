@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/utils/pfi/text.c                                         *
- * Created:     2012-01-20 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2012-2019 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/utils/pfi/text.c                                         
+ * @date       2012-01-20 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2012-2019 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

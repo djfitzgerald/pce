@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/arch/sims32/cmd_s32.h                                    *
- * Created:     2004-09-28 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2004-2013 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/arch/sims32/cmd_s32.h                                    
+ * @date       2004-09-28 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2004-2013 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

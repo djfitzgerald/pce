@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   tddec.c                                                      *
- * Created:     2014-01-05 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2014-2017 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       tddec.c                                                      
+ * @date       2014-01-05 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2014-2017 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

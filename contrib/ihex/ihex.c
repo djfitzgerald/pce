@@ -2,11 +2,13 @@
  * misc-utils                                                                *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:     contrib/ihex/ihex.c                                        *
- * Created:       2004-06-09 by Hampa Hug <hampa@hampa.ch>                   *
- * Copyright:     (C) 2004-2006 Hampa Hug <hampa@hampa.ch>                   *
- *****************************************************************************/
+/**
+ * @file       contrib/ihex/ihex.c                                        
+ * @date       2004-06-09 
+ * @author     Hampa Hug <hampa@hampa.ch>                   
+ * @copyright  (C) 2004-2006 Hampa Hug <hampa@hampa.ch>                      
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

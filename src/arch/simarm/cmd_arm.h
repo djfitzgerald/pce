@@ -2,12 +2,14 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/arch/simarm/cmd_arm.h                                    *
- * Created:     2004-11-04 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2004-2013 Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2004-2006 Lukas Ruf <ruf@lpr.ch>                         *
- *****************************************************************************/
+/**
+ * @file       src/arch/simarm/cmd_arm.h                                    
+ * @date       2004-11-04 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2004-2013 Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2004-2006 Lukas Ruf <ruf@lpr.ch>                            
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

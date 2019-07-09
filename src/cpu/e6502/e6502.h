@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/cpu/e6502/e6502.h                                        *
- * Created:     2004-05-02 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2004-2011 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/cpu/e6502/e6502.h                                        
+ * @date       2004-05-02 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2004-2011 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

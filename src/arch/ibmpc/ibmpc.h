@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/arch/ibmpc/ibmpc.h                                       *
- * Created:     2001-05-01 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2001-2019 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/arch/ibmpc/ibmpc.h                                       
+ * @date       2001-05-01 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2001-2019 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

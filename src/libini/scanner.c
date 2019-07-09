@@ -2,11 +2,13 @@
  * libini                                                                    *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/libini/scanner.c                                         *
- * Created:     2000-12-18 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2000-2010 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/libini/scanner.c                                         
+ * @date       2000-12-18 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2000-2010 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

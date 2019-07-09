@@ -2,11 +2,13 @@
  * libini                                                                    *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/libini/read.c                                            *
- * Created:     2001-08-24 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2001-2013 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/libini/read.c                                            
+ * @date       2001-08-24 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2001-2013 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

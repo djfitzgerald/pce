@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/lib/inidsk.h                                             *
- * Created:     2004-12-13 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2004-2011 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/lib/inidsk.h                                             
+ * @date       2004-12-13 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2004-2011 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

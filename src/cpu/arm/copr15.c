@@ -2,12 +2,14 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/cpu/arm/copr15.c                                         *
- * Created:     2004-11-09 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2004-2011 Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2004-2006 Lukas Ruf <ruf@lpr.ch>                         *
- *****************************************************************************/
+/**
+ * @file       src/cpu/arm/copr15.c                                         
+ * @date       2004-11-09 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2004-2011 Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2004-2006 Lukas Ruf <ruf@lpr.ch>                            
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/drivers/block/blkqed.h                                   *
- * Created:     2011-05-10 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2011 Hampa Hug <hampa@hampa.ch>                          *
- *****************************************************************************/
+/**
+ * @file       src/drivers/block/blkqed.h                                   
+ * @date       2011-05-10 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2011 Hampa Hug <hampa@hampa.ch>                             
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

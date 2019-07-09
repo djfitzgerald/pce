@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/chipset/80186/tcu.h                                      *
- * Created:     2012-06-30 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2012 Hampa Hug <hampa@hampa.ch>                          *
- *****************************************************************************/
+/**
+ * @file       src/chipset/80186/tcu.h                                      
+ * @date       2012-06-30 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2012 Hampa Hug <hampa@hampa.ch>                             
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

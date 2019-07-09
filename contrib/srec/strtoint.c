@@ -2,11 +2,13 @@
  * misc-utils                                                                *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   strtoint.c                                                   *
- * Created:     2001-04-21 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2001-2004 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       strtoint.c                                                   
+ * @date       2001-04-21 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2001-2004 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

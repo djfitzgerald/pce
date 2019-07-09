@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/utils/pri/text-raw.c                                     *
- * Created:     2017-10-29 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2017-2018 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/utils/pri/text-raw.c                                     
+ * @date       2017-10-29 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2017-2018 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

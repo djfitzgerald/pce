@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/utils/pce-img/cow.c                                      *
- * Created:     2013-01-14 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2013-2018 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/utils/pce-img/cow.c                                      
+ * @date       2013-01-14 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2013-2018 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/chipset/e6850.h                                          *
- * Created:     2013-05-31 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2013-2015 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/chipset/e6850.h                                          
+ * @date       2013-05-31 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2013-2015 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

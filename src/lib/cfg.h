@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/lib/cfg.h                                                *
- * Created:     2019-01-06 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2019 Hampa Hug <hampa@hampa.ch>                          *
- *****************************************************************************/
+/**
+ * @file       src/lib/cfg.h                                                
+ * @date       2019-01-06 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2019 Hampa Hug <hampa@hampa.ch>                             
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

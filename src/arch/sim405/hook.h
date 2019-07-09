@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/arch/sim405/hook.h                                       *
- * Created:     2018-12-22 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2018 Hampa Hug <hampa@hampa.ch>                          *
- *****************************************************************************/
+/**
+ * @file       src/arch/sim405/hook.h                                       
+ * @date       2018-12-22 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2018 Hampa Hug <hampa@hampa.ch>                             
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *
