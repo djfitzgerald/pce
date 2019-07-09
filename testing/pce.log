@@ -1,0 +1,1239 @@
+pce-ibmpc version 20190106-b8ff09f9
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5155 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+*** unknown model (5155)
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=250 srate=44100 lowpass=8000 driver=sdl:lowpass=0
+*** setting sound driver failed (sdl:lowpass=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=30
+DISK:     drive=0 type=auto blocks=0 chs=0/0/0 rw file=fd0.pfdc
+DISK:     drive=1 type=auto blocks=0 chs=0/0/0 rw file=fd1.pfdc
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 2 3]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+SERPORT:  COM1 addr=0x03f8 irq=4 multichar=r=1/w=1 uart=8250
+SERPORT:  COM1 driver=stdio:file=ser1.out:flush=1
+SERPORT:  COM2 addr=0x02f8 irq=3 multichar=r=1/w=1 uart=8250
+SERPORT:  COM2 driver=stdio:file=ser2.out:flush=1
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+PARPORT:  LPT2 addr=0x0278 driver=stdio:file=par2.out:flush=1
+Load:     file=rom/ibm-xt-1982-11-08.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+F000:003B: undefined operation [61 00]
+pce-ibmpc version 20190106-b8ff09f9
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5160.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=250 srate=44100 lowpass=8000 driver=sdl:lowpass=0
+*** setting sound driver failed (sdl:lowpass=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=30
+DISK:     drive=0 type=auto blocks=0 chs=0/0/0 rw file=fd0.pfdc
+DISK:     drive=1 type=auto blocks=0 chs=0/0/0 rw file=fd1.pfdc
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 2 3]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+SERPORT:  COM1 addr=0x03f8 irq=4 multichar=r=1/w=1 uart=8250
+SERPORT:  COM1 driver=stdio:file=ser1.out:flush=1
+SERPORT:  COM2 addr=0x02f8 irq=3 multichar=r=1/w=1 uart=8250
+SERPORT:  COM2 driver=stdio:file=ser2.out:flush=1
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+PARPORT:  LPT2 addr=0x0278 driver=stdio:file=par2.out:flush=1
+Load:     file=rom/ibm-xt-1986-05-09.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:F9ED] reset keyboard
+[F000:F9ED] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+pce-ibmpc version 20190106-b8ff09f9
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5155 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+*** unknown model (5155)
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=250 srate=44100 lowpass=8000 driver=sdl:lowpass=0
+*** setting sound driver failed (sdl:lowpass=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=30
+DISK:     drive=0 type=auto blocks=0 chs=0/0/0 rw file=fd0.pfdc
+DISK:     drive=1 type=auto blocks=0 chs=0/0/0 rw file=fd1.pfdc
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 2 3]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+SERPORT:  COM1 addr=0x03f8 irq=4 multichar=r=1/w=1 uart=8250
+SERPORT:  COM1 driver=stdio:file=ser1.out:flush=1
+SERPORT:  COM2 addr=0x02f8 irq=3 multichar=r=1/w=1 uart=8250
+SERPORT:  COM2 driver=stdio:file=ser2.out:flush=1
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+PARPORT:  LPT2 addr=0x0278 driver=stdio:file=par2.out:flush=1
+Load:     file=rom/ibm-xt-1982-11-08.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+F000:003B: undefined operation [61 00]
+pce-ibmpc version 20190106-b8ff09f9
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=250 srate=44100 lowpass=8000 driver=sdl:lowpass=0
+*** setting sound driver failed (sdl:lowpass=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=30
+DISK:     drive=0 type=auto blocks=0 chs=0/0/0 rw file=fd0.pfdc
+DISK:     drive=1 type=auto blocks=0 chs=0/0/0 rw file=fd1.pfdc
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 2 3]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+SERPORT:  COM1 addr=0x03f8 irq=4 multichar=r=1/w=1 uart=8250
+SERPORT:  COM1 driver=stdio:file=ser1.out:flush=1
+SERPORT:  COM2 addr=0x02f8 irq=3 multichar=r=1/w=1 uart=8250
+SERPORT:  COM2 driver=stdio:file=ser2.out:flush=1
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+PARPORT:  LPT2 addr=0x0278 driver=stdio:file=par2.out:flush=1
+Load:     file=rom/ibm-xt-1986-05-09.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:F9ED] reset keyboard
+[F000:F9ED] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+pce-ibmpc version 20190106-b8ff09f9
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+*** loading config file failed
+pce-ibmpc version 20190106-b8ff09f9
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=250 srate=44100 lowpass=8000 driver=sdl:lowpass=0
+*** setting sound driver failed (sdl:lowpass=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=30
+DISK:     drive=0 type=auto blocks=0 chs=0/0/0 rw file=fd0.pfdc
+DISK:     drive=1 type=auto blocks=0 chs=0/0/0 rw file=fd1.pfdc
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 2 3]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+SERPORT:  COM1 addr=0x03f8 irq=4 multichar=r=1/w=1 uart=8250
+SERPORT:  COM1 driver=stdio:file=ser1.out:flush=1
+SERPORT:  COM2 addr=0x02f8 irq=3 multichar=r=1/w=1 uart=8250
+SERPORT:  COM2 driver=stdio:file=ser2.out:flush=1
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+PARPORT:  LPT2 addr=0x0278 driver=stdio:file=par2.out:flush=1
+Load:     file=rom/ibm-xt-1986-05-09.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:F9ED] reset keyboard
+[F000:F9ED] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+pce-ibmpc version 20190106-b8ff09f9
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5165.cfg"
+*** loading config file failed
+pce-ibmpc version 20190106-b8ff09f9
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5155 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+*** unknown model (5155)
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=250 srate=44100 lowpass=8000 driver=sdl:lowpass=0
+*** setting sound driver failed (sdl:lowpass=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=30
+DISK:     drive=0 type=auto blocks=0 chs=0/0/0 rw file=fd0.pfdc
+DISK:     drive=1 type=auto blocks=0 chs=0/0/0 rw file=fd1.pfdc
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 2 3]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+SERPORT:  COM1 addr=0x03f8 irq=4 multichar=r=1/w=1 uart=8250
+SERPORT:  COM1 driver=stdio:file=ser1.out:flush=1
+SERPORT:  COM2 addr=0x02f8 irq=3 multichar=r=1/w=1 uart=8250
+SERPORT:  COM2 driver=stdio:file=ser2.out:flush=1
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+PARPORT:  LPT2 addr=0x0278 driver=stdio:file=par2.out:flush=1
+Load:     file=rom/ibm-xt-1986-05-09.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:F9ED] reset keyboard
+pce-ibmpc version 20190106-b8ff09f9
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5155 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+*** unknown model (5155)
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=250 srate=44100 lowpass=8000 driver=sdl:lowpass=0
+*** setting sound driver failed (sdl:lowpass=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=30
+DISK:     drive=0 type=auto blocks=0 chs=0/0/0 rw file=fd0.pfdc
+DISK:     drive=1 type=auto blocks=0 chs=0/0/0 rw file=fd1.pfdc
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 2 3]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+SERPORT:  COM1 addr=0x03f8 irq=4 multichar=r=1/w=1 uart=8250
+SERPORT:  COM1 driver=stdio:file=ser1.out:flush=1
+SERPORT:  COM2 addr=0x02f8 irq=3 multichar=r=1/w=1 uart=8250
+SERPORT:  COM2 driver=stdio:file=ser2.out:flush=1
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+PARPORT:  LPT2 addr=0x0278 driver=stdio:file=par2.out:flush=1
+Load:     file=rom/ibm-xt-1986-05-09.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:F9ED] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+[F000:F9ED] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+[F000:F9ED] reset keyboard
+pce-ibmpc version 20190106-b8ff09f9
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5155 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+*** unknown model (5155)
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=250 srate=44100 lowpass=8000 driver=sdl:lowpass=0
+*** setting sound driver failed (sdl:lowpass=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=2 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=30
+DISK:     drive=0 type=auto blocks=0 chs=0/0/0 rw file=fd0.pfdc
+DISK:     drive=1 type=auto blocks=0 chs=0/0/0 rw file=fd1.pfdc
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 2 3]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+SERPORT:  COM1 addr=0x03f8 irq=4 multichar=r=1/w=1 uart=8250
+SERPORT:  COM1 driver=stdio:file=ser1.out:flush=1
+SERPORT:  COM2 addr=0x02f8 irq=3 multichar=r=1/w=1 uart=8250
+SERPORT:  COM2 driver=stdio:file=ser2.out:flush=1
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+PARPORT:  LPT2 addr=0x0278 driver=stdio:file=par2.out:flush=1
+Load:     file=rom/ibm-xt-1986-05-09.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:F9ED] reset keyboard
+pce-ibmpc version 20190106-b8ff09f9
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+*** loading config file failed
+pce-ibmpc version 20190106-b8ff09f9
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5155 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+*** unknown model (5155)
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=250 srate=44100 lowpass=8000 driver=sdl:lowpass=0
+*** setting sound driver failed (sdl:lowpass=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=0 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=30
+DISK:     drive=0 type=auto blocks=0 chs=0/0/0 rw file=fd0.pfdc
+DISK:     drive=1 type=auto blocks=0 chs=0/0/0 rw file=fd1.pfdc
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 2 3]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+SERPORT:  COM1 addr=0x03f8 irq=4 multichar=r=1/w=1 uart=8250
+SERPORT:  COM1 driver=stdio:file=ser1.out:flush=1
+SERPORT:  COM2 addr=0x02f8 irq=3 multichar=r=1/w=1 uart=8250
+SERPORT:  COM2 driver=stdio:file=ser2.out:flush=1
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+PARPORT:  LPT2 addr=0x0278 driver=stdio:file=par2.out:flush=1
+Load:     file=rom/ibm-xt-1986-05-09.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+pce-ibmpc version 20190106-b8ff09f9
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5155 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+*** unknown model (5155)
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=250 srate=44100 lowpass=8000 driver=sdl:lowpass=0
+*** setting sound driver failed (sdl:lowpass=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=30
+DISK:     drive=0 type=auto blocks=0 chs=0/0/0 rw file=fd0.pfdc
+DISK:     drive=1 type=auto blocks=0 chs=0/0/0 rw file=fd1.pfdc
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 2 3]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+SERPORT:  COM1 addr=0x03f8 irq=4 multichar=r=1/w=1 uart=8250
+SERPORT:  COM1 driver=stdio:file=ser1.out:flush=1
+SERPORT:  COM2 addr=0x02f8 irq=3 multichar=r=1/w=1 uart=8250
+SERPORT:  COM2 driver=stdio:file=ser2.out:flush=1
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+PARPORT:  LPT2 addr=0x0278 driver=stdio:file=par2.out:flush=1
+Load:     file=rom/ibm-xt-1986-05-09.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:F9ED] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+[F000:F9ED] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+[F000:F9ED] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+[F000:F9ED] reset keyboard
+pce-ibmpc version 20190106-b8ff09f9
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5155 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+*** unknown model (5155)
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=250 srate=44100 lowpass=8000 driver=sdl:lowpass=0
+*** setting sound driver failed (sdl:lowpass=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=30
+DISK:     drive=0 type=auto blocks=0 chs=0/0/0 rw file=fd0.pfdc
+DISK:     drive=1 type=auto blocks=0 chs=0/0/0 rw file=fd1.pfdc
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 2 3]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+SERPORT:  COM1 addr=0x03f8 irq=4 multichar=r=1/w=1 uart=8250
+SERPORT:  COM1 driver=stdio:file=ser1.out:flush=1
+SERPORT:  COM2 addr=0x02f8 irq=3 multichar=r=1/w=1 uart=8250
+SERPORT:  COM2 driver=stdio:file=ser2.out:flush=1
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+PARPORT:  LPT2 addr=0x0278 driver=stdio:file=par2.out:flush=1
+Load:     file=rom/ibm-xt-1986-05-09.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:F9ED] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+[F000:F9ED] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+pce-ibmpc version 20190106-b8ff09f9
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=250 srate=44100 lowpass=8000 driver=sdl:lowpass=0
+*** setting sound driver failed (sdl:lowpass=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=30
+DISK:     drive=0 type=auto blocks=0 chs=0/0/0 rw file=fd0.pfdc
+DISK:     drive=1 type=auto blocks=0 chs=0/0/0 rw file=fd1.pfdc
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 2 3]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+SERPORT:  COM1 addr=0x03f8 irq=4 multichar=r=1/w=1 uart=8250
+SERPORT:  COM1 driver=stdio:file=ser1.out:flush=1
+SERPORT:  COM2 addr=0x02f8 irq=3 multichar=r=1/w=1 uart=8250
+SERPORT:  COM2 driver=stdio:file=ser2.out:flush=1
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+PARPORT:  LPT2 addr=0x0278 driver=stdio:file=par2.out:flush=1
+Load:     file=rom/ibm-xt-1986-05-09.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:F9ED] reset keyboard
+[F000:F9ED] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+pce-ibmpc version scm
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000f0000 size=32768 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=500 srate=44100 lowpass=8000 driver=sdl:wav=speaker.wav:lowpass=0:wavfilter=0
+*** setting sound driver failed (sdl:wav=speaker.wav:lowpass=0:wavfilter=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=16
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+DISK:     drive=0 type=auto blocks=0 chs=0/0/0 rw file=fd0.pfdc
+DISK:     drive=1 type=auto blocks=0 chs=0/0/0 rw file=fd1.pfdc
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 65535 65535]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+Load:     file=rom/ibmpc-pcex.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-basic-1.10.rom format=binary addr=0x000f6000
+Load:     file=rom/ibm-xt-1982-11-08.rom format=binary addr=0x000fe000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:FA35] reset keyboard
+[F000:FA35] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+pce-ibmpc version scm
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000f0000 size=32768 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=500 srate=44100 lowpass=8000 driver=sdl:wav=speaker.wav:lowpass=0:wavfilter=0
+*** setting sound driver failed (sdl:wav=speaker.wav:lowpass=0:wavfilter=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=16
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+DISK:     drive=0 type=auto blocks=0 chs=0/0/0 rw file=fd0.pfdc
+DISK:     drive=1 type=auto blocks=0 chs=0/0/0 rw file=fd1.pfdc
+DISK:     drive=128 type=image blocks=4030464 chs=999/64/63 rw file=dos5.img
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 65535 65535]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+Load:     file=rom/ibmpc-pcex.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-basic-1.10.rom format=binary addr=0x000f6000
+Load:     file=rom/ibm-xt-1982-11-08.rom format=binary addr=0x000fe000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:FA35] reset keyboard
+[F000:FA35] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+pce-ibmpc version scm
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000f0000 size=32768 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=500 srate=44100 lowpass=8000 driver=sdl:wav=speaker.wav:lowpass=0:wavfilter=0
+*** setting sound driver failed (sdl:wav=speaker.wav:lowpass=0:wavfilter=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=16
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+DISK:     drive=0 type=auto blocks=0 chs=0/0/0 rw file=fd0.pfdc
+DISK:     drive=1 type=auto blocks=0 chs=0/0/0 rw file=fd1.pfdc
+DISK:     drive=128 type=image blocks=4030464 chs=999/64/63 rw file=dos5.img
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 65535 65535]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+Load:     file=rom/ibmpc-pcex.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-basic-1.10.rom format=binary addr=0x000f6000
+Load:     file=rom/ibm-xt-1982-11-08.rom format=binary addr=0x000fe000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:FA35] reset keyboard
+[F000:FA35] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+pce-ibmpc version scm
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000f0000 size=32768 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=500 srate=44100 lowpass=8000 driver=sdl:wav=speaker.wav:lowpass=0:wavfilter=0
+*** setting sound driver failed (sdl:wav=speaker.wav:lowpass=0:wavfilter=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=16
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+DISK:     drive=128 type=image blocks=4030464 chs=999/64/63 rw file=dos5.img
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 65535 65535]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+Load:     file=rom/ibmpc-pcex.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-basic-1.10.rom format=binary addr=0x000f6000
+Load:     file=rom/ibm-xt-1982-11-08.rom format=binary addr=0x000fe000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:FA35] reset keyboard
+[F000:FA35] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+pce-ibmpc version scm
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000f0000 size=32768 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=500 srate=44100 lowpass=8000 driver=sdl:wav=speaker.wav:lowpass=0:wavfilter=0
+*** setting sound driver failed (sdl:wav=speaker.wav:lowpass=0:wavfilter=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=16
+DISK:     drive=128 type=image blocks=4030464 chs=999/64/63 rw file=dos5.img
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 65535 65535]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+Load:     file=rom/ibmpc-pcex.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-basic-1.10.rom format=binary addr=0x000f6000
+Load:     file=rom/ibm-xt-1982-11-08.rom format=binary addr=0x000fe000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:FA35] reset keyboard
+[F000:FA35] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+pce-ibmpc version scm
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000f0000 size=32768 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=500 srate=44100 lowpass=8000 driver=sdl:wav=speaker.wav:lowpass=0:wavfilter=0
+*** setting sound driver failed (sdl:wav=speaker.wav:lowpass=0:wavfilter=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=16
+DISK:     drive=128 type=image blocks=4030464 chs=999/64/63 rw file=dos5.img
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 65535 65535]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+Load:     file=rom/ibmpc-pcex.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-basic-1.10.rom format=binary addr=0x000f6000
+Load:     file=rom/ibm-xt-1982-11-08.rom format=binary addr=0x000fe000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:FA35] reset keyboard
+[F000:FA35] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+pce-ibmpc version scm
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000f0000 size=32768 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=500 srate=44100 lowpass=8000 driver=sdl:wav=speaker.wav:lowpass=0:wavfilter=0
+*** setting sound driver failed (sdl:wav=speaker.wav:lowpass=0:wavfilter=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=16
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 65535 65535]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+Load:     file=rom/ibmpc-pcex.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-basic-1.10.rom format=binary addr=0x000f6000
+Load:     file=rom/ibm-xt-1982-11-08.rom format=binary addr=0x000fe000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:FA35] reset keyboard
+[F000:FA35] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+pce-ibmpc version scm
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000f0000 size=32768 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=500 srate=44100 lowpass=8000 driver=sdl:wav=speaker.wav:lowpass=0:wavfilter=0
+*** setting sound driver failed (sdl:wav=speaker.wav:lowpass=0:wavfilter=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=16
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 65535 65535]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+Load:     file=rom/ibmpc-pcex.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-basic-1.10.rom format=binary addr=0x000f6000
+Load:     file=rom/ibm-xt-1982-11-08.rom format=binary addr=0x000fe000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:FA35] reset keyboard
+[F000:FA35] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+pce-ibmpc version scm
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000f0000 size=32768 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=500 srate=44100 lowpass=8000 driver=sdl:wav=speaker.wav:lowpass=0:wavfilter=0
+*** setting sound driver failed (sdl:wav=speaker.wav:lowpass=0:wavfilter=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=16
+DISK:     drive=128 type=auto blocks=4030464 chs=999/64/63 rw file=../../dos5.qed
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 65535 65535]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+Load:     file=rom/ibmpc-pcex.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-basic-1.10.rom format=binary addr=0x000f6000
+Load:     file=rom/ibm-xt-1982-11-08.rom format=binary addr=0x000fe000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:FA35] reset keyboard
+[F000:FA35] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+pce-ibmpc version scm
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000f0000 size=32768 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=500 srate=44100 lowpass=8000 driver=sdl:wav=speaker.wav:lowpass=0:wavfilter=0
+*** setting sound driver failed (sdl:wav=speaker.wav:lowpass=0:wavfilter=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=16
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 65535 65535]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+Load:     file=rom/ibmpc-pcex.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-basic-1.10.rom format=binary addr=0x000f6000
+Load:     file=rom/ibm-xt-1982-11-08.rom format=binary addr=0x000fe000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:FA35] reset keyboard
+[F000:FA35] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+pce-ibmpc version scm
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000f0000 size=32768 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=500 srate=44100 lowpass=8000 driver=sdl:wav=speaker.wav:lowpass=0:wavfilter=0
+*** setting sound driver failed (sdl:wav=speaker.wav:lowpass=0:wavfilter=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=16
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 65535 65535]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+Load:     file=rom/ibmpc-pcex.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-basic-1.10.rom format=binary addr=0x000f6000
+Load:     file=rom/ibm-xt-1982-11-08.rom format=binary addr=0x000fe000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:FA35] reset keyboard
+[F000:FA35] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+pce-ibmpc version scm
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000f0000 size=32768 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=500 srate=44100 lowpass=8000 driver=sdl:wav=speaker.wav:lowpass=0:wavfilter=0
+*** setting sound driver failed (sdl:wav=speaker.wav:lowpass=0:wavfilter=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=16
+DISK:     drive=1 type=auto blocks=2880 chs=80/2/18 rw file=fd1440.bin
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 65535 65535]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+Load:     file=rom/ibmpc-pcex.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-basic-1.10.rom format=binary addr=0x000f6000
+Load:     file=rom/ibm-xt-1982-11-08.rom format=binary addr=0x000fe000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:FA35] reset keyboard
+[F000:FA35] reset keyboard
+pce-ibmpc version scm
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000f0000 size=32768 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=500 srate=44100 lowpass=8000 driver=sdl:wav=speaker.wav:lowpass=0:wavfilter=0
+*** setting sound driver failed (sdl:wav=speaker.wav:lowpass=0:wavfilter=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=16
+DISK:     drive=0 type=auto blocks=2880 chs=80/2/18 rw file=fd1440.pbi
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 65535 65535]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+Load:     file=rom/ibmpc-pcex.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-basic-1.10.rom format=binary addr=0x000f6000
+Load:     file=rom/ibm-xt-1982-11-08.rom format=binary addr=0x000fe000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:FA35] reset keyboard
+[F000:FA35] reset keyboard
+pce-ibmpc version scm
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000f0000 size=32768 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=500 srate=44100 lowpass=8000 driver=sdl:wav=speaker.wav:lowpass=0:wavfilter=0
+*** setting sound driver failed (sdl:wav=speaker.wav:lowpass=0:wavfilter=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=16
+DISK:     drive=0 type=auto blocks=2880 chs=80/2/18 rw file=fd1440.pbi
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 65535 65535]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+Load:     file=rom/ibmpc-pcex.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-basic-1.10.rom format=binary addr=0x000f6000
+Load:     file=rom/ibm-xt-1982-11-08.rom format=binary addr=0x000fe000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:FA35] reset keyboard
+[F000:FA35] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+pce-ibmpc version 20190106-b8ff09f9
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000f0000 size=32768 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=500 srate=44100 lowpass=8000 driver=sdl:wav=speaker.wav:lowpass=0:wavfilter=0
+*** setting sound driver failed (sdl:wav=speaker.wav:lowpass=0:wavfilter=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=16
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 65535 65535]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+Load:     file=rom/ibmpc-pcex.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-basic-1.10.rom format=binary addr=0x000f6000
+Load:     file=rom/ibm-xt-1982-11-08.rom format=binary addr=0x000fe000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:FA35] reset keyboard
+[F000:FA35] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+pce-ibmpc version 20190106-b8ff09f9
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000f0000 size=32768 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=500 srate=44100 lowpass=8000 driver=sdl:wav=speaker.wav:lowpass=0:wavfilter=0
+*** setting sound driver failed (sdl:wav=speaker.wav:lowpass=0:wavfilter=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=16
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 65535 65535]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+Load:     file=rom/ibmpc-pcex.rom format=binary addr=0x000f0000
+Load:     file=rom/ibm-basic-1.10.rom format=binary addr=0x000f6000
+Load:     file=rom/ibm-xt-1982-11-08.rom format=binary addr=0x000fe000
+Load:     file=rom/ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:FA35] reset keyboard
+[F000:FA35] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+pce-ibmpc version 20190709-5cca310d-mod
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000f0000 size=32768 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=500 srate=44100 lowpass=8000 driver=sdl:wav=speaker.wav:lowpass=0:wavfilter=0
+*** setting sound driver failed (sdl:wav=speaker.wav:lowpass=0:wavfilter=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=16
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 65535 65535]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+Load:     file=ibmpc-pcex.rom format=binary addr=0x000f0000
+*** loading failed (ibmpc-pcex.rom)
+Load:     file=ibm-basic-1.10.rom format=binary addr=0x000f6000
+*** loading failed (ibm-basic-1.10.rom)
+Load:     file=ibm-xt-1982-11-08.rom format=binary addr=0x000fe000
+*** loading failed (ibm-xt-1982-11-08.rom)
+Load:     file=ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+*** loading failed (ibm-mfm-1985-10-28.rom)
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+pce-ibmpc version 20190709-5cca310d-mod
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000f0000 size=32768 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=500 srate=44100 lowpass=8000 driver=sdl:wav=speaker.wav:lowpass=0:wavfilter=0
+*** setting sound driver failed (sdl:wav=speaker.wav:lowpass=0:wavfilter=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=16
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 65535 65535]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+Load:     file=ibmpc-pcex.rom format=binary addr=0x000f0000
+Load:     file=ibm-basic-1.10.rom format=binary addr=0x000f6000
+Load:     file=ibm-xt-1982-11-08.rom format=binary addr=0x000fe000
+Load:     file=ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:FA35] reset keyboard
+[F000:FA35] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+pce-ibmpc version 20190709-5cca310d-mod
+Copyright (C) 1995-2019 Hampa Hug <hampa@hampa.ch>
+CONFIG:   file="pce-5155.cfg"
+SYSTEM:   model=5160 floppies=2 sw1=00/00 patch-init=0 patch-int19=0
+RAM:      addr=0x00000000 size=524288 file=<none>
+ROM:      addr=0x000f0000 size=65536 file=<none>
+ROM:      addr=0x000f0000 size=32768 file=<none>
+ROM:      addr=0x000c8000 size=32768 file=<none>
+CPU:      model=8088 speed=1X
+DMAC:     addr=0x00000000 size=0x0010
+PIC:      addr=0x00000020 size=0x0002
+PIT:      addr=0x00000040 size=0x0004
+PPI:      addr=0x00000060 size=0x0004
+SPEAKER:  volume=500 srate=44100 lowpass=8000 driver=sdl:wav=speaker.wav:lowpass=0:wavfilter=0
+*** setting sound driver failed (sdl:wav=speaker.wav:lowpass=0:wavfilter=0)
+TERM:     driver=x11 ESC=ESC aspect=4/3 min_size=512*384 scale=1 mouse=[1/1 1/1]
+VIDEO:    device=cga
+VIDEO:    CGA io=0x03d0 addr=0xb8000 font=0 blink=16
+DISK:     drive=128 type=auto blocks=41820 chs=615/4/17 rw file=hd0.pimg
+FDC:      addr=0x000003f0 irq=6 accurate=1 eot=1 drv=[0 1 65535 65535]
+HDC:      addr=0x00000320 irq=5 drv=[128 129] sectors=17 switches=0x0a id=""
+PARPORT:  LPT1 addr=0x0378 driver=stdio:file=par1.out:flush=1
+Load:     file=ibmpc-pcex.rom format=binary addr=0x000f0000
+Load:     file=ibm-basic-1.10.rom format=binary addr=0x000f6000
+Load:     file=ibm-xt-1982-11-08.rom format=binary addr=0x000fe000
+Load:     file=ibm-mfm-1985-10-28.rom format=binary addr=0x000c8000
+[0000:0000] reset pc
+[F000:FFF0] reset keyboard
+[F000:FA35] reset keyboard
+[F000:FA35] reset keyboard
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 0 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
+HDC:      init drive 1 (c=615 h=4 s=17 rc=615 wp=300 ecc=11 size=20910.0K)
