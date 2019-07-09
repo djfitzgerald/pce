@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/devices/video/ega.c                                      *
- * Created:     2003-09-06 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2003-2014 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/devices/video/ega.c                                      
+ * @date       2003-09-06 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2003-2014 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

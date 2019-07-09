@@ -2,12 +2,14 @@
  * misc-utils                                                                *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:     strarg.c                                                   *
- * Created:       2004-04-12 by Hampa Hug <hampa@hampa.ch>                   *
+/**
+ * @file       strarg.c                                                   
+ * @date       2004-04-12 
+ * @author     Hampa Hug <hampa@hampa.ch>                   
  * Last modified: 2004-04-12 by Hampa Hug <hampa@hampa.ch>                   *
- * Copyright:     (C) 2004 Hampa Hug <hampa@hampa.ch>                        *
- *****************************************************************************/
+ * @copyright  (C) 2004 Hampa Hug <hampa@hampa.ch>                           
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

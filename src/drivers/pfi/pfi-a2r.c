@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/drivers/pfi/pfi-a2r.c                                    *
- * Created:     2019-06-18 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2019 Hampa Hug <hampa@hampa.ch>                          *
- *****************************************************************************/
+/**
+ * @file       src/drivers/pfi/pfi-a2r.c                                    
+ * @date       2019-06-18 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2019 Hampa Hug <hampa@hampa.ch>                             
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

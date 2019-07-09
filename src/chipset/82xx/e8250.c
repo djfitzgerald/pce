@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/chipset/82xx/e8250.c                                     *
- * Created:     2003-08-25 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2003-2018 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/chipset/82xx/e8250.c                                     
+ * @date       2003-08-25 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2003-2018 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

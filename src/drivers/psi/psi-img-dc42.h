@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/drivers/psi/psi-img-dc42.h                               *
- * Created:     2011-07-09 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2011-2013 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/drivers/psi/psi-img-dc42.h                               
+ * @date       2011-07-09 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2011-2013 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

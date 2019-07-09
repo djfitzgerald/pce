@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/devices/clock/ds1743.h                                   *
- * Created:     2006-12-15 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2006-2009 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/devices/clock/ds1743.h                                   
+ * @date       2006-12-15 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2006-2009 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

@@ -2,12 +2,14 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/devices/video/plantronics.c                              *
- * Created:     2008-10-13 by John Elliott <jce@seasip.demon.co.uk>          *
- * Copyright:   (C) 2008-2017 Hampa Hug <hampa@hampa.ch>                     *
- *              (C) 2008-2016 John Elliott <jce@seasip.demon.co.uk>          *
- *****************************************************************************/
+/**
+ * @file       src/devices/video/plantronics.c                              
+ * @date       2008-10-13 
+ * @author     John Elliott <jce@seasip.demon.co.uk>          
+ * @copyright  (C) 2008-2017 Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2008-2016 John Elliott <jce@seasip.demon.co.uk>             
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

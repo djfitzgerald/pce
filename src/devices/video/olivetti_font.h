@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/devices/video/olivetti_font.h                            *
- * Created:     2017-08-10 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2017 Hampa Hug <hampa@hampa.ch>                          *
- *****************************************************************************/
+/**
+ * @file       src/devices/video/olivetti_font.h                            
+ * @date       2017-08-10 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2017 Hampa Hug <hampa@hampa.ch>                             
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

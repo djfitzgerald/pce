@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/drivers/video/sdl2.c                                     *
- * Created:     2015-06-15 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2015-2019 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/drivers/video/sdl2.c                                     
+ * @date       2015-06-15 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2015-2019 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

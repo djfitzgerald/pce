@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/utils/pri/event.c                                        *
- * Created:     2015-02-23 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2015 Hampa Hug <hampa@hampa.ch>                          *
- *****************************************************************************/
+/**
+ * @file       src/utils/pri/event.c                                        
+ * @date       2015-02-23 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2015 Hampa Hug <hampa@hampa.ch>                             
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

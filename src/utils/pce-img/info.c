@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/utils/pce-img/info.c                                     *
- * Created:     2018-02-20 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2018 Hampa Hug <hampa@hampa.ch>                          *
- *****************************************************************************/
+/**
+ * @file       src/utils/pce-img/info.c                                     
+ * @date       2018-02-20 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2018 Hampa Hug <hampa@hampa.ch>                             
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

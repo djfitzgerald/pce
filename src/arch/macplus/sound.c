@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/arch/macplus/sound.c                                     *
- * Created:     2008-04-18 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2008-2011 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/arch/macplus/sound.c                                     
+ * @date       2008-04-18 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2008-2011 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

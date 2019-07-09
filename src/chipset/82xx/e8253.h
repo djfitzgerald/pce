@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/chipset/82xx/e8253.h                                     *
- * Created:     2001-05-04 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2001-2017 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/chipset/82xx/e8253.h                                     
+ * @date       2001-05-04 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2001-2017 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/cpu/e8086/internal.h                                     *
- * Created:     2003-04-10 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2003-2017 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/cpu/e8086/internal.h                                     
+ * @date       2003-04-10 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2003-2017 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

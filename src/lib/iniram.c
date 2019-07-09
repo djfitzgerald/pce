@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/lib/iniram.c                                             *
- * Created:     2005-07-24 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2005-2010 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/lib/iniram.c                                             
+ * @date       2005-07-24 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2005-2010 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

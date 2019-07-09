@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/arch/ibmpc/cassette.c                                    *
- * Created:     2008-11-25 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2008-2010 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/arch/ibmpc/cassette.c                                    
+ * @date       2008-11-25 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2008-2010 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

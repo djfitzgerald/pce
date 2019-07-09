@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/drivers/pfi/pfi-scp.h                                    *
- * Created:     2014-01-30 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2014-2017 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/drivers/pfi/pfi-scp.h                                    
+ * @date       2014-01-30 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2014-2017 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

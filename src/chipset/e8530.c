@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/chipset/e8530.c                                          *
- * Created:     2007-11-11 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2007-2019 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/chipset/e8530.c                                          
+ * @date       2007-11-11 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2007-2019 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

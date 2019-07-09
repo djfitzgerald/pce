@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/lib/path.c                                               *
- * Created:     2008-11-06 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2008-2009 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/lib/path.c                                               
+ * @date       2008-11-06 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2008-2009 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

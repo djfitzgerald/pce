@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/arch/macplus/rtc.h                                       *
- * Created:     2007-11-16 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2007-2018 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/arch/macplus/rtc.h                                       
+ * @date       2007-11-16 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2007-2018 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

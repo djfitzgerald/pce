@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/utils/aym/encode.c                                       *
- * Created:     2015-05-21 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2015-2016 Hampa Hug <hampa@hampa.ch>                     *
- *****************************************************************************/
+/**
+ * @file       src/utils/aym/encode.c                                       
+ * @date       2015-05-21 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2015-2016 Hampa Hug <hampa@hampa.ch>                        
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *

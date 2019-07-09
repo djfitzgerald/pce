@@ -2,11 +2,13 @@
  * pce                                                                       *
  *****************************************************************************/
 
-/*****************************************************************************
- * File name:   src/drivers/pri/pri-enc-fm.c                                 *
- * Created:     2014-12-28 by Hampa Hug <hampa@hampa.ch>                     *
- * Copyright:   (C) 2014 Hampa Hug <hampa@hampa.ch>                          *
- *****************************************************************************/
+/**
+ * @file       src/drivers/pri/pri-enc-fm.c                                 
+ * @date       2014-12-28 
+ * @author     Hampa Hug <hampa@hampa.ch>                     
+ * @copyright  (C) 2014 Hampa Hug <hampa@hampa.ch>                             
+ * @copyright  GNU Public License, version 2
+ */
 
 /*****************************************************************************
  * This program is free software. You can redistribute it and / or modify it *
